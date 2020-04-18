@@ -3,7 +3,8 @@
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <button type="submit" name="save"
       class="btn btn-primary" [disabled]="!recipeForm.valid">Save</button>
-      <button type="button" name="cancel" class="btn btn-danger">Cancel</button>
+      <button type="button" name="cancel"
+      class="btn btn-danger" (click)="onCancel()">Cancel</button>
 
       <div class="row">
         <div class="col-xs-12">
@@ -21,14 +22,14 @@
             <label for="imageUrl">image url</label>
             <input
               type="text" id="imageUrl" class="form-control"
-              formControlName="imagePath">
+              formControlName="imagePath" #imagePath>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xs-12">
-          <img src="" class="img-responsive">
+          <img [src]="imagePath.value" class="img-responsive" style="max-height: 200px;">
         </div>
       </div>
 
