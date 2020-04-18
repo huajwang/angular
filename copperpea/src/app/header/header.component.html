@@ -15,8 +15,10 @@
             Manage <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a style="cursor:pointer;">Save data</a></li>
-            <li><a style="cursor:pointer;">Fetch data</a></li>
+            <li><a style="cursor:pointer;"
+              (click)="storeData()">Save data</a></li>
+            <li><a style="cursor:pointer;"
+                (click)="fetchData()">Fetch data</a></li>
           </ul>
         </li>
       </ul>
