@@ -33,16 +33,21 @@ export class AuthService {
     );
   }
 
-getToken() {
-  firebase.auth().currentUser.getIdToken()
-  .then(
-    (token: string) => { this.token = token; }
-  );
-  return this.token;
-}
+  getToken() {
+    firebase.auth().currentUser.getIdToken()
+    .then(
+      (token: string) => { this.token = token; }
+    );
+    return this.token;
+  }
 
   isAuthenticated() {
     return this.token != null;
+  }
+
+  logout() {
+    firebase.auth().signOut();
+    this.token = null;
   }
 
 }

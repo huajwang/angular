@@ -12,7 +12,7 @@ export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
   recipeChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[];
+  private recipes: Recipe[] = [];
 
   constructor(private slService: ShoppingListService) {}
 
