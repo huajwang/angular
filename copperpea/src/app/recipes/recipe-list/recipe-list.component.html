@@ -1,9 +1,12 @@
-<div class="row">
-  <div class="col-xs-12">
-    <button (click)="newRecipe()" class="btn btn-success">New Recipe</button>
+
+<ng-template [ngIf]="isAuthenticated()">
+  <div class="row">
+    <div class="col-xs-12">
+      <button (click)="newRecipe()" class="btn btn-success">New Recipe</button>
+    </div>
   </div>
-</div>
-<hr>
+  <hr>
+</ng-template>
 <div class="row">
   <div class="col-xs-12">
     <app-recipe-item
