@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpResponse } from "@angular/common/http";
 
-import { StoreService } from "../shared/store.service";
-import { AuthService } from "../auth/auth.service";
+import { StoreService } from "../../shared/store.service";
+import { AuthService } from "../../auth/auth.service";
 
 @Component({
   selector: 'app-header',
