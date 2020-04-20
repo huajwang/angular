@@ -14,13 +14,13 @@ export class StoreService {
 
   storeData() {
     const token = this.authService.getToken();
-    return this.http.put(this.recipeUrl + "?auth=" + token, 
+    return this.http.put(this.recipeUrl + "?auth=" + token,
       this.recipeService.getRecipes());
   }
 
   fetchData() {
-    const token = this.authService.getToken();
-    this.http.get<Recipe[]>(this.recipeUrl + "?auth=" + token)
+    // const token = this.authService.getToken();
+    this.http.get<Recipe[]>(this.recipeUrl)
     .subscribe(
       (recipes: Recipe[]) => {
         this.recipeService.setRecipes(recipes);

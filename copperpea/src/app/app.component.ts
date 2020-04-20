@@ -17,7 +17,4 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onNavigate(feature: string) {
-    this.featureLoaded = feature;
-  }
 }
