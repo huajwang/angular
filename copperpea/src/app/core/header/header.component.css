@@ -1,0 +1,5 @@
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+  margin-bottom: 0px;
+  border-radius: 0;
+}
