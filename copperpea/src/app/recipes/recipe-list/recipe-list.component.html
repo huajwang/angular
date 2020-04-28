@@ -1,17 +1,18 @@
-
-<ng-template [ngIf]="isAuthenticated()">
+<div class="container-fluid text-center">
+  <ng-template [ngIf]="isAuthenticated()">
+    <div class="row">
+      <div class="col-xs-12">
+        <button (click)="newRecipe()" class="btn btn-success">New Recipe</button>
+      </div>
+    </div>
+    <hr>
+  </ng-template>
   <div class="row">
     <div class="col-xs-12">
-      <button (click)="newRecipe()" class="btn btn-success">New Recipe</button>
+      <app-recipe-item
+        *ngFor="let recipeEl of recipes; let i = index"
+        [recipe]="recipeEl" [index]="i">
+      </app-recipe-item>
     </div>
-  </div>
-  <hr>
-</ng-template>
-<div class="row">
-  <div class="col-xs-12">
-    <app-recipe-item
-      *ngFor="let recipeEl of recipes; let i = index"
-      [recipe]="recipeEl" [index]="i">
-    </app-recipe-item>
   </div>
 </div>
