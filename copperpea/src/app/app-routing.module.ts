@@ -4,11 +4,13 @@ import { Routes, RouterModule } from "@angular/router";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { HomeComponent } from "./core/home/home.component";
+import { ContactComponent } from "./core/contact/contact.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'recipes', loadChildren:
       () => import('./recipes/recipes.module').then(m => m.RecipesModule)},
+  {path: 'contact', component: ContactComponent},
   {path: 'shopping-list', component: ShoppingListComponent},
 ];
 
