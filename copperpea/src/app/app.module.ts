@@ -16,16 +16,23 @@ import { AuthService } from "./auth/auth.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthGuardService } from "./auth/auth-guard.service";
+import { CompetitionComponent } from './courses/competition/competition.component';
+import { JuniorComponent } from './courses/junior/junior.component';
+import { BlogComponent } from './blogs/blog/blog.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CompetitionComponent,
+    JuniorComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     SharedModule,
     ShoppingListModule,
