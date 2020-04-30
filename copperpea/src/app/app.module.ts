@@ -16,16 +16,12 @@ import { AuthService } from "./auth/auth.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthGuardService } from "./auth/auth-guard.service";
-import { CompetitionComponent } from './courses/competition/competition.component';
-import { JuniorComponent } from './courses/junior/junior.component';
 import { BlogComponent } from './blogs/blog/blog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompetitionComponent,
-    JuniorComponent,
     BlogComponent
   ],
   imports: [
@@ -37,7 +33,7 @@ import { BlogComponent } from './blogs/blog/blog.component';
     SharedModule,
     ShoppingListModule,
     AuthModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [ShoppingListService, RecipeService,
               StoreService, AuthService, AuthGuardService],
