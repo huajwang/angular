@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "../app-routing.module";
 
@@ -15,7 +16,8 @@ import { ContactComponent } from './contact/contact.component';
   ],
   imports: [
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   exports: [
     AppRoutingModule,

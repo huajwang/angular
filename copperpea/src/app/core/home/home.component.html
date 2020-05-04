@@ -3,6 +3,25 @@
     <h2 style="font-size:50px">一对一在线定制编程教育</h2>
     <br><br>
     <p>咨询免费领取<strong>50元</strong>定制课程</p>
-    <button>立即咨询</button>
+    <button (click)="openChat()">立即咨询</button>
   </div>
+</div>
+
+<button type="button" name="button" class="chat-button">chat</button>
+
+<div class="chat-popup" #chatPopup>
+    <label for="msg"><b>Message</b></label>
+    <div *ngFor="let conv of conversations">
+      <div class="container" *ngIf="conv.who == 'host'">
+        <img src="/assets/img/avatar_g2.jpg" alt="Avatar" style="width:50%;">
+        <p>{{ conv.sentence }}</p>
+        <span class="time-right">11:00</span>
+      </div>
+      <div class="container darker" *ngIf="conv.who == 'guest'">
+      <p>{{ conv.sentence }}</p>
+      <span class="time-left">11:01</span>
+    </div>
+    </div>
+    <input type="text" name="words" class="form-control"
+    #box (keyup.enter)="onEnter(box.value)">
 </div>
