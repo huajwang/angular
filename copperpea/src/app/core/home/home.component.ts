@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { Subscription } from "rxjs";
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { ChatMessage } from "./chat.model";
+import { ChatService } from "./chat.service";
 
 @Component({
   selector: 'app-home',
@@ -16,10 +18,18 @@ export class HomeComponent implements OnInit {
   webSocketEndPoint: string = 'http://localhost:8080/copperpea-websocket';
   topic: string = "/topic/biztoc";
   stompClient: any;
+  chatmsgs: ChatMessage[];
+  subscription: Subscription;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private chatService: ChatService) { }
 
   ngOnInit(): void {
+    this.subscription = this.chatService.chatChanged.subscribe(
+      (chats: ChatMessage[]) => {
+        this.chatmsgs = chats;
+      }
+    );
+    this.chatmsgs = this.chatService.getMessages();
   }
 
   connect() {
@@ -55,6 +65,7 @@ export class HomeComponent implements OnInit {
 
   onMessageReceived(message) {
           console.log("++++++Message Recieved from Server " + message);
+          this.chatmsgs.push(new ChatMessage(1, 'biz', message));
 
   }
 
@@ -67,7 +78,9 @@ export class HomeComponent implements OnInit {
 
   onEnter(msg: string) {
     this.renderer.setProperty(this.box.nativeElement, 'value', '');
-    let data = JSON.stringify(new ChatMessage(msg));
+    let chatMsg = new ChatMessage(1, 'cus', msg);
+    let data = JSON.stringify(chatMsg);
+    this.chatService.addMessage(chatMsg);
     this.stompClient.send("/app/ctobiz", {}, data);
   }
 

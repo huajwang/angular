@@ -13,14 +13,14 @@
       <span class="chat-popup_title_2">chat</span>
       <span class="chat-popup_title_3"><a (click)="miniChat()"> X </a></span>
     </div>
-    <div>
-      <div class="container">
+    <div *ngFor="let chatmsg of chatmsgs; let i = index">
+      <div class="container" *ngIf="chatmsg.name==='biz'">
         <img src="/assets/img/avatar_g2.jpg" alt="Avatar" style="width:50%;">
-        <p style="color: #008CBA;">test</p>
+        <p style="color: #008CBA;">{{ chatmsg.content }}</p>
         <span class="time-right">11:00</span>
       </div>
-      <div class="container darker">
-        <p>client</p>
+      <div class="container darker" *ngIf="chatmsg.name==='cus'">
+        <p>{{ chatmsg.content }}</p>
         <span class="time-left">11:01</span>
     </div>
   </div>

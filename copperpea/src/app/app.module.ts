@@ -13,6 +13,7 @@ import { ShoppingListService } from "./shopping-list/shopping-list.service";
 import { RecipeService } from "./recipes/recipe.service";
 import { StoreService } from "./shared/store.service";
 import { AuthService } from "./auth/auth.service";
+import { ChatService } from "./core/home/chat.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthGuardService } from "./auth/auth-guard.service";
@@ -36,7 +37,7 @@ import { BlogComponent } from './blogs/blog/blog.component';
     CoreModule,
   ],
   providers: [ShoppingListService, RecipeService,
-              StoreService, AuthService, AuthGuardService],
+              StoreService, AuthService, AuthGuardService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
