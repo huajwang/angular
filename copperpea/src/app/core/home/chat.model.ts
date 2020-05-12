@@ -1,4 +1,4 @@
-export class HelloMessage {
+export class ChatMessage {
   constructor(public name: string) {
   }
 }
