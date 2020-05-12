@@ -36,14 +36,12 @@ export class HomeComponent implements OnInit {
     //         this.reconnect_delay = 2000;
     //     }, this.errorCallBack);
 
-
-    this.stompClient.connect({}, function (frame) {
-            console.log('------Connected: ' + frame);
-            this.subscribe("/topic/biztoc", function (greeting) {
-              console.log("------received from Spring backend: " + greeting.body)
-              // onMessageReceived(greeting);
+    // use () => syntax to avoid 'this' problem
+    this.stompClient.connect({}, (frame) => {
+            this.stompClient.subscribe(this.topic, (greeting) => {
+              this.onMessageReceived(greeting.body);
             });
-        });
+        }, this.errorCallBack);
 
 
 
@@ -59,15 +57,15 @@ export class HomeComponent implements OnInit {
       // on error, schedule a reconnection attempt
   errorCallBack(error) {
           console.log("errorCallBack -> " + error)
-          // setTimeout(() => {
-          //     connect();
-          // }, 5000);
+          setTimeout(() => {
+              this.connect();
+          }, 5000);
       }
 
-      onMessageReceived(message) {
+  onMessageReceived(message) {
           console.log("++++++Message Recieved from Server " + message);
-          // this.appComponent.handleMessage(JSON.stringify(message.body));
-      }
+          
+  }
 
   openChat() {
     //this.chatPopup.nativeElement.style.display="block"
