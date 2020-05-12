@@ -44,28 +44,57 @@
 }
 
 /* chat */
-.chat-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
 
 .chat-popup {
+  background: LightYellow;
   display: none;
   position: fixed;
-  bottom: 0;
+  bottom: 5px;
   height: 500px;
   right: 15px;
   z-index: 9;
   border: 3px solid #f1f1f1;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px 5px 5px 5px;
 }
+
+.chat-popup_title {
+  height: 25px;
+}
+
+.chat-popup_title_1 {
+  position: absolute;
+  left: 5px;
+}
+
+.chat-popup_title_2 {
+  position: absolute;
+  text-align: center; /* these two lines place it in the middle */
+  width: 100%;
+}
+
+.chat-popup_title_3 {
+  position: absolute;
+  right: 5px;
+}
+
+.chat-popup_title a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.chat-popup > input {
+  position: absolute;
+  max-width: 300px;
+  border: 2px solid green;
+  bottom: inherit;
+}
+
+.chat-popup > input:hover,
+.chat-popup > input:focus {
+  background-color: DodgerBlue;
+}
+
 
 .container {
   background-color: #f1f1f1;
@@ -106,10 +135,4 @@
 .time-left {
   float: left;
   color: #999;
-}
-
-.chat-popup input {
-  position: fixed;
-  bottom: 0;
-  max-width: 300px;
 }

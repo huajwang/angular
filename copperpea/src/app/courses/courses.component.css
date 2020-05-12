@@ -1,5 +1,9 @@
+.row a {
+  text-decoration: none;
+}
+
 a:hover {
-  color: darkgreen;
+  color: #ff1b68;
 }
 
 /* Add a gray background color and some padding to the footer */

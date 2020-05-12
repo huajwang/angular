@@ -8,7 +8,6 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit {
   title = 'my-app';
-  featureLoaded = 'recipe';
 
   ngOnInit() {
     firebase.initializeApp({

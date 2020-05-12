@@ -7,21 +7,23 @@
   </div>
 </div>
 
-<button type="button" name="button" class="chat-button">chat</button>
-
 <div class="chat-popup" #chatPopup>
-    <label for="msg"><b>Message</b></label>
-    <div *ngFor="let conv of conversations">
-      <div class="container" *ngIf="conv.who == 'host'">
+    <div class="chat-popup_title">
+      <span class="chat-popup_title_1"><a> 电话 </a></span>
+      <span class="chat-popup_title_2">chat</span>
+      <span class="chat-popup_title_3"><a (click)="miniChat()"> X </a></span>
+    </div>
+    <div>
+      <div class="container">
         <img src="/assets/img/avatar_g2.jpg" alt="Avatar" style="width:50%;">
-        <p>{{ conv.sentence }}</p>
+        <p style="color: #008CBA;">test</p>
         <span class="time-right">11:00</span>
       </div>
-      <div class="container darker" *ngIf="conv.who == 'guest'">
-      <p>{{ conv.sentence }}</p>
-      <span class="time-left">11:01</span>
+      <div class="container darker">
+        <p>client</p>
+        <span class="time-left">11:01</span>
     </div>
-    </div>
-    <input type="text" name="words" class="form-control"
+  </div>
+  <input type="text" name="words" class="form-control"
     #box (keyup.enter)="onEnter(box.value)">
 </div>
