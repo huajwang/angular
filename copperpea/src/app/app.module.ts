@@ -14,10 +14,12 @@ import { RecipeService } from "./recipes/recipe.service";
 import { StoreService } from "./shared/store.service";
 import { AuthService } from "./auth/auth.service";
 import { ChatService } from "./core/home/chat.service";
+import { BlogService } from "./blog/blog.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthGuardService } from "./auth/auth-guard.service";
-import { BlogComponent } from './blogs/blog/blog.component';
+import { BlogComponent } from './blog/blog.component';
+
 
 
 @NgModule({
@@ -37,7 +39,7 @@ import { BlogComponent } from './blogs/blog/blog.component';
     CoreModule,
   ],
   providers: [ShoppingListService, RecipeService,
-              StoreService, AuthService, AuthGuardService, ChatService],
+              StoreService, AuthService, AuthGuardService, ChatService, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

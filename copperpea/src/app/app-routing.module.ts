@@ -5,7 +5,7 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { HomeComponent } from "./core/home/home.component";
 import { ContactComponent } from "./core/contact/contact.component";
-import { BlogComponent } from "./blogs/blog/blog.component";
+import { BlogComponent } from "./blog/blog.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
