@@ -65,7 +65,9 @@ export class HomeComponent implements OnInit {
 
   onMessageReceived(message) {
           console.log("++++++Message Recieved from Server " + message);
-          this.chatmsgs.push(new ChatMessage(1, 'biz', message));
+          // When receiving data from a web server, the data is always a string.
+          // Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+          this.chatmsgs.push(new ChatMessage(1, 'biz', JSON.parse(message).content));
 
   }
 
@@ -79,9 +81,8 @@ export class HomeComponent implements OnInit {
   onEnter(msg: string) {
     this.renderer.setProperty(this.box.nativeElement, 'value', '');
     let chatMsg = new ChatMessage(1, 'cus', msg);
-    let data = JSON.stringify(chatMsg);
     this.chatService.addMessage(chatMsg);
-    this.stompClient.send("/app/ctobiz", {}, data);
+    this.stompClient.send("/app/ctobiz", {}, JSON.stringify(chatMsg));
   }
 
   miniChat() {
