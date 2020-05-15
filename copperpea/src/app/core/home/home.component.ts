@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('chatPopup') chatPopup: ElementRef;
   @ViewChild('box') box: ElementRef;
 
-  webSocketEndPoint: string = 'http://localhost:8080/copperpea-websocket';
+  webSocketEndPoint: string = 'http://localhost:8080/edu/copperpea-websocket';
   topic: string = "/topic/biztoc";
   stompClient: any;
   chatmsgs: ChatMessage[];
@@ -43,9 +43,6 @@ export class HomeComponent implements OnInit {
               this.onMessageReceived(msg.body);
             });
         }, this.errorCallBack);
-
-
-
   }
 
   disconnect() {

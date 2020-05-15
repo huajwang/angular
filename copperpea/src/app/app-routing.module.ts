@@ -13,7 +13,7 @@ const appRoutes: Routes = [
       () => import('./recipes/recipes.module').then(m => m.RecipesModule)},
   {path: 'courses', loadChildren:
       () => import('./courses/courses.module').then(m => m.CoursesModule)},
-  {path: 'blogs', component: BlogComponent},
+  {path: 'blog', component: BlogComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'shopping-list', component: ShoppingListComponent},
 ];
