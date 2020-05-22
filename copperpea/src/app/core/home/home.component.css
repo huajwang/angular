@@ -43,6 +43,50 @@
   transform: translateY(4px);
 }
 
+/* side bar */
+
+.icon-bar {
+  position: fixed;
+  right: 0;
+  bottom: 30%;
+  z-index: 8;
+  background-color: white;
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 5px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+  margin: 10px;
+}
+
+.icon-bar img {
+  height: 60px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+/*  bottom navbar */
+.navbar-bottom-image {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+
+.navbar-bottom-text {
+  display: inline-block;
+  color: white;
+}
+
 /* chat */
 
 .chat-popup {
@@ -51,7 +95,7 @@
   position: fixed;
   bottom: 5px;
   height: 500px;
-  right: 15px;
+  left: 15px;
   z-index: 9;
   border: 3px solid #f1f1f1;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
