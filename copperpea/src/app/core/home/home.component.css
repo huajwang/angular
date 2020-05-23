@@ -51,17 +51,21 @@
   bottom: 30%;
   z-index: 8;
   background-color: #FFEBCD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon-bar .side-item {
-  margin: 10px 5px;
+  display: flex;
   width: 80px;
-  text-align: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .icon-bar img {
   width: 100%;
-  display: block;
 }
 
 .active {
