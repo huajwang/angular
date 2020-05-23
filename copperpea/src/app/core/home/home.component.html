@@ -7,12 +7,21 @@
   </div>
 </div>
 
-<div class="icon-bar">
-  <a class="active">
-    <img src="/assets/img/python.jpg"></a>
-  <a><img src="/assets/img/python.jpg" alt=""></a>
-  <a><img src="/assets/img/python.jpg" alt=""></a>
-</div>
+<nav class="icon-bar">
+  <div class="active side-item" (mouseover)="showIcon()" (mouseleave)="hideIcon()">
+    <img src="/assets/img/python.jpg">
+    <span>Telephone</span>
+  </div>
+
+  <div class="side-item">
+    <img src="/assets/img/python.jpg" (mouseover)="showIcon()">
+    <span>wechat</span>
+  </div>
+  <div class="side-item">
+    <img src="/assets/img/python.jpg" (mouseover)="showIcon()">
+    <span>chat</span>
+  </div>
+</nav>
 
 
 <nav>

@@ -53,22 +53,15 @@
   background-color: white;
 }
 
-.icon-bar a {
-  display: block;
+.icon-bar .side-item {
+  margin: 10px 5px;
+  width: 80px;
   text-align: center;
-  padding: 5px;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 36px;
-  margin: 10px;
 }
 
 .icon-bar img {
-  height: 60px;
-}
-
-.icon-bar a:hover {
-  background-color: #000;
+  width: 100%;
+  display: block;
 }
 
 .active {
@@ -95,7 +88,7 @@
   position: fixed;
   bottom: 5px;
   height: 500px;
-  left: 15px;
+  left: 5px;
   z-index: 9;
   border: 3px solid #f1f1f1;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
