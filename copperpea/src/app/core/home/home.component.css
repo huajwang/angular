@@ -81,12 +81,19 @@
 }
 
 .nav-bottom {
-  height: 60px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
   background-color: #FFEBCD;
+  height: 50px;
 }
-.nav-input {
-  margin: auto;
-  width: 60%;
+
+.nav-bottom > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
 }
 
 /* chat */
