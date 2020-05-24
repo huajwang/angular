@@ -7,19 +7,35 @@
   </div>
 </div>
 
-<nav class="icon-bar">
-  <div class="active side-item" (mouseover)="showIcon()" (mouseleave)="hideIcon()">
-    <img src="/assets/img/python.jpg">
-    <span>Telephone</span>
+<nav class="fixed-sidebar">
+  <div class="sidebar-item">
+    <div class="active side-item">
+      <img src="/assets/img/python.jpg" class="test">
+      <span>电话</span>
+    </div>
+    <div class="side-pop">
+      416-5592-3183
+    </div>
   </div>
 
-  <div class="side-item">
-    <img src="/assets/img/python.jpg" (mouseover)="showIcon()">
-    <span>wechat</span>
+  <div class="sidebar-item">
+    <div class="side-item">
+      <img src="/assets/img/python.jpg">
+      <span>微信</span>
+    </div>
+    <div class="side-pop">
+      <img src="/assets/img/wechat.png">
+    </div>
   </div>
-  <div class="side-item">
-    <img src="/assets/img/python.jpg" (mouseover)="showIcon()">
-    <span>chat</span>
+
+  <div class="sidebar-item">
+    <div class="side-item">
+      <img src="/assets/img/python.jpg">
+      <span>在线咨询</span>
+    </div>
+    <div class="side-pop">
+      <img src="/assets/img/avatar_g2.jpg">
+    </div>
   </div>
 </nav>
 

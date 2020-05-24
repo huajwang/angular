@@ -85,12 +85,4 @@ export class HomeComponent implements OnInit {
   miniChat() {
     this.renderer.setStyle(this.chatPopup.nativeElement, 'display', 'none');
   }
-
-  showIcon() {
-    console.log("mouse over")
-  }
-
-  hideIcon() {
-    console.log("mouse leave")
-  }
 }

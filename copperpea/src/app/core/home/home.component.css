@@ -45,11 +45,10 @@
 
 /* side bar */
 
-.icon-bar {
+nav.fixed-sidebar {
   position: fixed;
   right: 0;
   bottom: 30%;
-  z-index: 8;
   background-color: #FFEBCD;
   display: flex;
   flex-direction: column;
@@ -57,16 +56,39 @@
   align-items: center;
 }
 
-.icon-bar .side-item {
+nav.fixed-sidebar > .sidebar-item {
   display: flex;
   width: 80px;
+  flex-direction: row;
+}
+
+.side-item {
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.icon-bar img {
+.side-pop {
+  position: absolute;
+  display: none;
+  border: 3px solid red;
+  width: 120px;
+}
+
+div.side-pop > img {
   width: 100%;
 }
+
+div.side-item > img {
+  width: 100%;
+}
+
+div.side-item:hover + .side-pop {
+  display: block;
+  left: -150px;
+}
+
+
 
 .active {
   background-color: #4CAF50;
