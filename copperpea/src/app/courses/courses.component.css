@@ -6,6 +6,12 @@ a:hover {
   color: #ff1b68;
 }
 
+/*course*/
+.course {
+  display: flex;
+  cursor: pointer;
+}
+
 /* Add a gray background color and some padding to the footer */
 footer {
   background-color: #f2f2f2;

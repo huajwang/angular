@@ -83,9 +83,9 @@ div.side-item > img {
   width: 100%;
 }
 
-div.side-item:hover + .side-pop {
+div.sidebar-item:hover .side-pop {
   display: block;
-  left: -150px;
+  left: -120px;
 }
 
 

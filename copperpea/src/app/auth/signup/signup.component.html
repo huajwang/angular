@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form (ngSubmit)="onSignup(f)" #f="ngForm">
@@ -15,4 +15,30 @@
       </form>
     </div>
   </div>
+</div> -->
+
+<div class="bg-img">
+  <form (ngSubmit)="onSignup(f)" #f="ngForm" style="border:1px solid #ccc" class="form-container">
+    <div>
+      <h3>注册</h3>
+      <label for="email"><b>电子邮件</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required ngModel>
+
+      <label for="password"><b>密码</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required ngModel>
+
+      <label for="psw-repeat"><b>重输密码</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> 记住我
+      </label>
+
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+    </div>
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">取消</button>
+      <button type="submit" class="signupbtn" name="button" [disabled]="!f.valid">注册</button>
+    </div>
+  </form>
 </div>
