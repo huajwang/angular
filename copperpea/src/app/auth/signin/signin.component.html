@@ -12,7 +12,10 @@
     <div class="btn-bottom">
       <button type="submit" name="button" class="btn"
       [disabled]="!f.valid">登录</button>
-      <a routerLink="/signup">立即注册</a>
+      <div class="reg-recover-password">
+        <a routerLink="/signup">立即注册</a>
+        <a routerLink="/signup">忘记密码</a>
+      </div>
     </div>
   </form>
 </div>

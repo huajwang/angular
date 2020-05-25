@@ -66,3 +66,8 @@ input[type=text]:focus, input[type=password]:focus {
   bottom: 0;
   width: 100%;
 }
+
+.reg-recover-password {
+  display: flex;
+  justify-content: space-between;
+}

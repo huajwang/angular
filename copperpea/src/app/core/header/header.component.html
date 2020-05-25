@@ -21,7 +21,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <ng-template [ngIf]="!isAuthenticated()">
-          <li><a routerLink="/signin">Login</a></li>
+          <li><a routerLink="/checkout">下单</a></li>
+          <li><a routerLink="/signin">登录</a></li>
         </ng-template>
         <li class="dropdown" appDropdown *ngIf="isAuthenticated()">
           <a class="dropdown-toggle" role="button">

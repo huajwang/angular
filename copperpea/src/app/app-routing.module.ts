@@ -6,6 +6,7 @@ import { AuthGuardService } from "./auth/auth-guard.service";
 import { HomeComponent } from "./core/home/home.component";
 import { ContactComponent } from "./core/contact/contact.component";
 import { BlogComponent } from "./blog/blog.component";
+import { CheckoutComponent } from "./core/checkout/checkout.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   {path: 'blog', component: BlogComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'shopping-list', component: ShoppingListComponent},
+  {path: 'checkout', component: CheckoutComponent}
 ];
 
 @NgModule({
