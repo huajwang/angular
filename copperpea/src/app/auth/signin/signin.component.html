@@ -1,14 +1,17 @@
 <div class="bg-img">
   <form (ngSubmit)="login(f)" #f="ngForm" class="form-container">
     <h3>登录</h3>
-    <div class="form-group">
-      <label for="email">电子邮件:</label>
-      <input type="text" id="email" name="email" class="form-control" ngModel>
+    <div>
+      <div class="form-group">
+        <label for="email">电子邮件:</label>
+        <input type="text" id="email" name="email" class="form-control" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password" class="form-control" ngModel>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="password">密码:</label>
-      <input type="password" id="password" name="password" class="form-control" ngModel>
-    </div>
+    <div></div>
     <div class="btn-bottom">
       <button type="submit" name="button" class="btn"
       [disabled]="!f.valid">登录</button>

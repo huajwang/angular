@@ -42,32 +42,3 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
-
-/*  bottom navbar */
-.navbar-bottom-image {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-}
-
-.navbar-bottom-text {
-  display: inline-block;
-  color: white;
-}
-
-.nav-bottom {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFEBCD;
-  height: 50px;
-}
-
-.nav-bottom > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: flex-start;
-}
