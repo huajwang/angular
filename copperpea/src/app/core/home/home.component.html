@@ -7,39 +7,6 @@
   </div>
 </div>
 
-<nav class="fixed-sidebar">
-  <div class="sidebar-item">
-    <div class="active side-item">
-      <img src="/assets/img/python.jpg" class="test">
-      <span>电话</span>
-    </div>
-    <div class="side-pop">
-      416-5592-3183
-    </div>
-  </div>
-
-  <div class="sidebar-item">
-    <div class="side-item">
-      <img src="/assets/img/python.jpg">
-      <span>微信</span>
-    </div>
-    <div class="side-pop">
-      <img src="/assets/img/wechat.png">
-    </div>
-  </div>
-
-  <div class="sidebar-item">
-    <div class="side-item">
-      <img src="/assets/img/python.jpg">
-      <span>在线咨询</span>
-    </div>
-    <div class="side-pop">
-      <img src="/assets/img/avatar_g2.jpg">
-    </div>
-  </div>
-</nav>
-
-
 <nav class="nav-bottom">
     <!-- <img src="/assets/img/python.jpg" class="navbar-bottom-image"> -->
     <div>
@@ -56,28 +23,4 @@
         <span>试听</span>
       </button>
   </div>
-
-
 </nav>
-
-<div class="chat-popup" #chatPopup>
-    <div class="chat-popup_title">
-      <span class="chat-popup_title_1"><a> 电话 </a></span>
-      <span class="chat-popup_title_2">chat</span>
-      <span class="chat-popup_title_3"><a (click)="miniChat()"> X </a></span>
-    </div>
-    <div style="overflow-y:scroll; overflow-x:hidden; height:100px;"
-     *ngFor="let chatmsg of chatmsgs; let i = index">
-      <div class="container" *ngIf="chatmsg.name==='biz'">
-        <img src="/assets/img/avatar_g2.jpg" alt="Avatar" style="width:20%;">
-        <p style="color: #008CBA;">{{ chatmsg.content }}</p>
-        <span class="time-right">11:00</span>
-      </div>
-      <div class="container darker" *ngIf="chatmsg.name==='cus'">
-        <p>{{ chatmsg.content }}</p>
-        <span class="time-left">11:01</span>
-    </div>
-  </div>
-  <input type="text" name="words" class="form-control"
-    #box (keyup.enter)="onEnter(box.value)">
-</div>
