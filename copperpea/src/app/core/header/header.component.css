@@ -33,8 +33,34 @@ nav.fixed-sidebar > .sidebar-item {
 .side-pop {
   position: absolute;
   display: none;
-  border: 3px solid red;
-  width: 120px;
+  width: 180px;
+}
+
+/* The actual content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: beige;
+  position: relative;
+  border-radius: 6px;
+  color: #333;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: -10px;
+  border: medium solid beige;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
 }
 
 div.side-pop > img {
@@ -47,7 +73,7 @@ div.side-item > img {
 
 div.sidebar-item:hover .side-pop {
   display: block;
-  left: -120px;
+  left: -190px;
 }
 
 .active {
