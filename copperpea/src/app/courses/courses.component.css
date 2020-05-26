@@ -1,3 +1,23 @@
+.course-sys-top {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.course-sys-top-title {
+  position: absolute;
+  top: 8px;
+  left: 45%;
+}
+
+.course-sys-top-centered {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .row a {
   text-decoration: none;
 }
@@ -6,10 +26,25 @@ a:hover {
   color: #ff1b68;
 }
 
+.courses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.video-intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 /*course*/
 .course {
   display: flex;
   cursor: pointer;
+  width: 80%;
+  margin: 10px auto;
 }
 
 /* Add a gray background color and some padding to the footer */
