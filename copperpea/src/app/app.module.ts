@@ -7,6 +7,7 @@ import { SharedModule } from "./shared/shared.module";
 import { ShoppingListModule } from "./shopping-list/shopping-list.module";
 import { AuthModule } from "./auth/auth.module";
 import { CoreModule } from "./core/core.module";
+import { MeModule } from "./me/me.module";
 
 import { AppComponent } from './app.component';
 import { ShoppingListService } from "./shopping-list/shopping-list.service";
@@ -14,18 +15,16 @@ import { RecipeService } from "./recipes/recipe.service";
 import { StoreService } from "./shared/store.service";
 import { AuthService } from "./auth/auth.service";
 import { ChatService } from "./core/home/chat.service";
-import { BlogService } from "./blog/blog.service";
+import { MeService } from "./me/me.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthGuardService } from "./auth/auth-guard.service";
-import { BlogComponent } from './blog/blog.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +36,10 @@ import { BlogComponent } from './blog/blog.component';
     ShoppingListModule,
     AuthModule,
     CoreModule,
+    MeModule
   ],
   providers: [ShoppingListService, RecipeService,
-              StoreService, AuthService, AuthGuardService, ChatService, BlogService],
+              StoreService, AuthService, AuthGuardService, ChatService, MeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

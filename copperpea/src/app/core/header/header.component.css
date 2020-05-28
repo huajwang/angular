@@ -16,6 +16,7 @@ nav.fixed-sidebar {
   justify-content: center;
   align-items: center;
   z-index: 12;
+  border-radius: 6px;
 }
 
 nav.fixed-sidebar > .sidebar-item {

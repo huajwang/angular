@@ -33,11 +33,49 @@ a:hover {
   justify-content: space-around;
 }
 
-.video-intro {
+.video-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
 }
+.video-intro {
+  position: relative;
+  background-color: blue;
+  width: 60%;
+}
+
+.video-ear {
+  position: absolute;
+  top: 0;
+  right: -42px;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-ear-text-1 {
+  writing-mode: vertical-rl;
+  background-color: #ffd235;
+  margin-bottom: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.video-ear-text-2 {
+  writing-mode: vertical-rl;
+  cursor: pointer;
+  padding: 5px;
+}
+
+div.video-ear-text-1 > svg:hover {
+  fill: blue;
+}
+
+
+.video-side {
+  width: 30%;
+  background-color: green;
+  margin-left: 30px;
+}
+
 
 /*course*/
 .course {
