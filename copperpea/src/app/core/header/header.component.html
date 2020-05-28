@@ -16,15 +16,13 @@
         <li routerLinkActive="active"><a routerLink="/courses/junior">中小学编程</a></li>
         <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
         <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
-        <li routerLinkActive="active"><a routerLink="/me">个人中心</a></li>
         <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <ng-template [ngIf]="!isAuthenticated()">
-          <li><a routerLink="/checkout">下单</a></li>
           <li><a routerLink="/signin">登录</a></li>
         </ng-template>
-        <li class="dropdown" appDropdown *ngIf="isAuthenticated()">
+        <!-- <li class="dropdown" appDropdown *ngIf="isAuthenticated()">
           <a class="dropdown-toggle" role="button">
             Manage <span class="caret"></span>
           </a>
@@ -34,6 +32,9 @@
             <li><a style="cursor:pointer;"
                 (click)="fetchData()">Fetch data</a></li>
           </ul>
+        </li> -->
+        <li routerLinkActive="active" *ngIf="isAuthenticated()">
+          <a routerLink="/me">个人中心</a>
         </li>
         <li><a *ngIf="isAuthenticated()" (click)="logout()"
           style="cursor: pointer;">Logout</a></li>
