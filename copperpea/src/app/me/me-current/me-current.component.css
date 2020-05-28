@@ -1,0 +1,12 @@
+.online-class {
+  margin-top: 10%;
+}
+
+.zoom-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div a {
+  text-decoration: none;
+}
