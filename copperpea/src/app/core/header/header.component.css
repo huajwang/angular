@@ -23,12 +23,20 @@ nav.fixed-sidebar > .sidebar-item {
   display: flex;
   width: 80px;
   flex-direction: row;
+  justify-content: center;
+  margin: 5px auto;
 }
 
 .side-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.side-item > i {
+  color: rgb(0, 204, 95);
+  font-size: 45px;
+  height: 45px;
 }
 
 .side-pop {
@@ -68,17 +76,9 @@ div.side-pop > img {
   width: 100%;
 }
 
-div.side-item > img {
-  width: 100%;
-}
-
 div.sidebar-item:hover .side-pop {
   display: block;
   left: -190px;
-}
-
-.active {
-  background-color: #4CAF50;
 }
 
 /* chat */
