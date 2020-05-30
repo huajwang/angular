@@ -1,0 +1,24 @@
+/* footer */
+.footer-container {
+  background: #222c3c;
+  height: 300px;
+  padding: 24px 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.footer-barcode {
+  color: white;
+}
+
+.footer-contact-item {
+  margin: 5px auto;
+  display: flex;
+  align-items: center;
+}

@@ -25,7 +25,7 @@ import { PythonDetailComponent } from './python/python-detail/python-detail.comp
   ],
   imports: [
     CommonModule,
-    CoursesRoutingModule
+    CoursesRoutingModule,
   ],
   providers: [CourseService]
 })

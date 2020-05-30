@@ -8,13 +8,15 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HomeComponent,
     ContactComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    FooterComponent
   ],
   imports: [
     SharedModule,
@@ -23,7 +25,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
   ],
   exports: [
     AppRoutingModule,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class CoreModule {}
