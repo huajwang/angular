@@ -9,6 +9,7 @@ a {
   padding: 10px 15px;
   width: 90%;
 }
+
 .what-you-learn_items {
   list-style: none;
   margin-top: 20px;
@@ -29,10 +30,24 @@ a {
   padding-left: 10px;
 }
 
+.course-content {
+  border: 1px solid #dedfe0;
+}
+
+.course-lecture {
+  margin-bottom: 15px;
+}
+
 a.content-header {
   display: flex;
   width: 90%;
   justify-content: space-between;
+}
+
+.content-header_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .content-minus {
@@ -42,14 +57,26 @@ a.content-header {
 .lectures-container {
   width: 90%;
   display: none;
+  margin-bottom: 5px;
 }
 
 .lecture-container {
   display: flex;
   justify-content: space-between;
+  border: 1px solid #dedfe0;
 }
 
 .lecture-left {
   display: flex;
+  align-items: center;
+}
 
+.lecture-left_play {
+  display: flex;
+  align-items: center;
+}
+
+.lecture-title {
+  display: flex;
+  vertical-align: middle;
 }

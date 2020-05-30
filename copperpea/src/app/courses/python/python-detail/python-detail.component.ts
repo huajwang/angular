@@ -13,6 +13,7 @@ export class PythonDetailComponent implements OnInit {
 
   id: number;
   course: Course;
+  lectures_expanded: boolean = false;
   @ViewChild('lectures_container') lecture_container: ElementRef;
   @ViewChild('content_plus') content_plus: ElementRef;
   @ViewChild('content_minus') content_minus: ElementRef;
@@ -31,10 +32,14 @@ export class PythonDetailComponent implements OnInit {
     );
   }
 
-  expandLectures() {
-      this.renderer.setStyle(this.lecture_container.nativeElement, 'display', 'block');
-      this.renderer.setStyle(this.content_plus.nativeElement, 'display', 'none');
-      this.renderer.setStyle(this.content_minus.nativeElement, 'display', 'block');
+  toggleLectures() {
+    this.lectures_expanded = !this.lectures_expanded;
+    this.renderer.setStyle(this.lecture_container.nativeElement, 'display',
+    this.lectures_expanded ? 'block': 'none');
+    this.renderer.setStyle(this.content_plus.nativeElement, 'display',
+    this.lectures_expanded ? 'none': 'block');
+    this.renderer.setStyle(this.content_minus.nativeElement, 'display',
+    this.lectures_expanded ? 'block': 'none');
   }
 
 }
