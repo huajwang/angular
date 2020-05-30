@@ -39,3 +39,56 @@
     </li>
   </ul>
 </div>
+
+<h3>Course content</h3>
+<div>
+  <div>
+    <a class="content-header" (click)="expandLectures()">
+      <div>
+        <span>
+          <span class="content-plus" #content_plus>+</span>
+          <span class="content-minus" #content_minus>-</span>
+        </span>
+        <span>Course overview</span>
+      </div>
+      <div>
+        <span>3 lectures</span>
+        <span>12:28</span>
+      </div>
+    </a>
+
+    <div class="lectures-container" #lectures_container>
+      <div class="lecture-container">
+        <div class="lecture-left">
+          <span>
+            <svg class="bi bi-play-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="orange"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+           </svg>
+          </span>
+          <div class="top">
+            <div class="lecture-description">
+            </div>
+            <div class="lecture-title">
+              <a>Course Introduction</a>
+              <a class="arrow-down">
+                <span>down arrow</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="lecture-detail">
+          <a><span>Preview</span></a>
+          <span>7:19</span>
+        </div>
+      </div>
+      <div class="lecture-container">
+        <div>Course Curriculum</div>
+        <div></div>
+      </div>
+    </div>
+
+  </div>
+</div>

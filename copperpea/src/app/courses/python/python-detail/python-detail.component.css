@@ -1,3 +1,8 @@
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .what-you-get-content {
   background-color: #f9f9f9;
   border: 1px solid #dedfe0;
@@ -22,4 +27,29 @@
 
 .what-you-learn_item > span {
   padding-left: 10px;
+}
+
+a.content-header {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.content-minus {
+  display: none;
+}
+
+.lectures-container {
+  width: 90%;
+  display: none;
+}
+
+.lecture-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lecture-left {
+  display: flex;
+
 }
