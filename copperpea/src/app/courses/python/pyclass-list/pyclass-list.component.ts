@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  OnDestroy } from '@angular/core';
+import { Subscription } from "rxjs";
+
 import { Course } from "../../course.model";
 import { CourseService } from "../../course.service";
 
@@ -7,14 +9,25 @@ import { CourseService } from "../../course.service";
   templateUrl: './pyclass-list.component.html',
   styleUrls: ['./pyclass-list.component.css']
 })
-export class PyclassListComponent implements OnInit {
+export class PyclassListComponent implements OnInit, OnDestroy {
 
-  courses: Course[];
+  courses: Course[] = [];
+  subscription: Subscription;
 
   constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.courses = this.courseService.getCourses('python');
+    this.subscription = this.courseService.courseChanged.subscribe(
+      (courses: Course[]) => {
+        this.courses = courses;
+        console.log(this.courses);
+      }
+    );
+    this.courseService.getCourses('python');
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+  
 }
