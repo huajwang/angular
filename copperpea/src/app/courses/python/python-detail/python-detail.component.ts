@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Subscription } from "rxjs";
 
 import { Course } from "../../course.model";
+import { CourseContent } from "../../course-content.model";
 import { CourseService } from "../../course.service";
 
 @Component({
@@ -9,11 +11,14 @@ import { CourseService } from "../../course.service";
   templateUrl: './python-detail.component.html',
   styleUrls: ['./python-detail.component.css']
 })
-export class PythonDetailComponent implements OnInit {
+export class PythonDetailComponent implements OnInit, OnDestroy {
 
   id: number;
   course: Course;
+  courseContents: CourseContent[] = [];
   lectures_expanded: boolean = false;
+  subscription: Subscription;
+
   @ViewChild('lectures_container') lecture_container: ElementRef;
   @ViewChild('content_plus') content_plus: ElementRef;
   @ViewChild('content_minus') content_minus: ElementRef;
@@ -30,6 +35,16 @@ export class PythonDetailComponent implements OnInit {
         this.course = this.courseService.getCourse(this.id);
       }
     );
+    this.subscription = this.courseService.courseContentChanged.subscribe(
+      (courseContents: CourseContent[]) => {
+        this.courseContents = courseContents;
+      }
+    );
+    this.courseService.getCourseContent(1);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   toggleLectures() {
