@@ -28,9 +28,9 @@ a:hover {
 
 .courses {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  flex-direction: row;
+  /* align-items: center;
+  justify-content: space-around; */
 }
 
 .video-container {
@@ -80,9 +80,11 @@ div.video-ear-text-1 > svg:hover {
 /*course*/
 .course {
   display: flex;
+  flex-direction: column;
   cursor: pointer;
-  width: 80%;
+  width: 20%;
   margin: 10px auto;
+  border: 1px solid blue;
 }
 
 /* Add a gray background color and some padding to the footer */

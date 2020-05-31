@@ -175,36 +175,3 @@ div.sidebar-item:hover .side-pop {
   float: left;
   color: #999;
 }
-
-/*  bottom navbar */
-.navbar-bottom-image {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-}
-
-.navbar-bottom-text {
-  display: inline-block;
-  color: white;
-}
-
-.nav-bottom {
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFEBCD;
-  height: 60px;
-  width: 100%;
-  z-index: 5;
-  justify-content: space-around;
-}
-
-.nav-bottom > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: flex-start;
-}

@@ -4,6 +4,7 @@ import { Subscription } from "rxjs";
 
 import { Course } from "../../course.model";
 import { CourseContent } from "../../course-content.model";
+import { CourseLecture } from "../../course-lecture.model";
 import { CourseService } from "../../course.service";
 
 @Component({
@@ -16,6 +17,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   id: number;
   course: Course;
   courseContents: CourseContent[] = [];
+  courseLectures: CourseLecture[] = [];
   lectures_expanded: boolean = false;
   subscription: Subscription;
 
@@ -40,7 +42,15 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
         this.courseContents = courseContents;
       }
     );
-    this.courseService.getCourseContent(1);
+    this.subscription = this.courseService.courseLectureChanged.subscribe(
+      (courseLectures: CourseLecture[]) => {
+        this.courseLectures = courseLectures;
+        console.log(this.courseLectures);
+      }
+    );
+
+    this.courseService.getCourseContents(+this.course.courseId);
+    this.courseService.getCourseLectures(+this.course.courseId);
   }
 
   ngOnDestroy() {
