@@ -12,7 +12,7 @@
 <h3>Course content</h3>
 <div class="course-content">
   <div class="course-lecture" *ngFor="let lecture of courseLectures; let i = index;">
-    <a class="content-header" (click)="toggleLectures()">
+    <a class="content-header" (click)="toggleLectures(i)">
       <div class="content-header_left">
         <span>
           <span class="content-plus" #content_plus>+</span>

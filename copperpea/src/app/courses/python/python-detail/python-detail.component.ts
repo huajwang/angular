@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, ElementRef, Renderer2, QueryList } from '@angular/core';
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Subscription } from "rxjs";
 
@@ -21,7 +21,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   lectures_expanded: boolean = false;
   subscription: Subscription;
 
-  @ViewChild('lectures_container') lecture_container: ElementRef;
+  @ViewChildren('lectures_container') lecture_container: QueryList<ElementRef>;
   @ViewChild('content_plus') content_plus: ElementRef;
   @ViewChild('content_minus') content_minus: ElementRef;
 
@@ -57,9 +57,10 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  toggleLectures() {
+  toggleLectures(idx: number) {
+    console.log(this.lecture_container.length)
     this.lectures_expanded = !this.lectures_expanded;
-    this.renderer.setStyle(this.lecture_container.nativeElement, 'display',
+    this.renderer.setStyle(this.lecture_container.toArray()[idx].nativeElement, 'display',
     this.lectures_expanded ? 'block': 'none');
     this.renderer.setStyle(this.content_plus.nativeElement, 'display',
     this.lectures_expanded ? 'none': 'block');
