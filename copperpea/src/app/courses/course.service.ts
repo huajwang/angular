@@ -50,7 +50,7 @@ export class CourseService {
     this.http.get<CourseLecture[]>(this.courseLectureUrl)
       .subscribe((courseLectures: CourseLecture[]) => {
         this.courseLectures = courseLectures;
-        this.courseLectureChanged.next(this.courseLectures.slice());
+        this.courseLectureChanged.next(this.courseLectures);
       });
   }
 

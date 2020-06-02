@@ -1,11 +1,18 @@
+import { LecturePart } from "./lecture-part.model";
+
+
 export class CourseLecture {
   lectureId: String;
-  courseId: String;
   lectureName: String;
+  courseId: String;
 
-  constructor(lectureId: String, courseId: String, lectureName: String) {
+  lectureParts: LecturePart[];
+
+
+  constructor(lectureId: String, lectureName: String, courseId: String, lectureParts: LecturePart[]) {
     this.lectureId = lectureId;
-    this.courseId = courseId;
     this.lectureName = lectureName;
+    this.courseId = courseId;
+    this.lectureParts = lectureParts;
   }
 }

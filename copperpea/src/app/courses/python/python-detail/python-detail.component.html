@@ -11,7 +11,7 @@
 
 <h3>Course content</h3>
 <div class="course-content">
-  <div class="course-lecture" *ngFor="let lecture of courseLectures;">
+  <div class="course-lecture" *ngFor="let lecture of courseLectures; let i = index;">
     <a class="content-header" (click)="toggleLectures()">
       <div class="content-header_left">
         <span>
@@ -27,7 +27,7 @@
     </a>
 
     <div class="lectures-container" #lectures_container>
-      <div class="lecture-container">
+      <div class="lecture-container" *ngFor="let lecturePart of lecture.lectureParts;">
         <div class="lecture-left">
           <span class="lecture-left_play">
             <svg class="bi bi-play-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="orange"
@@ -39,7 +39,7 @@
             <div class="lecture-description">
             </div>
             <div class="lecture-title">
-              <a>Course Introduction</a>
+              <a>{{ lecturePart.partName }}</a>
               <a class="arrow-down">
                 <span>down arrow</span>
               </a>
@@ -49,38 +49,10 @@
         </div>
 
         <div class="lecture-detail">
-          <a><span>Preview</span></a>
-          <span>7:19</span>
+          <a><span *ngIf="lecturePart.preview">Preview</span></a>
+          <span>{{ lecturePart.length }}</span>
         </div>
       </div>
-
-      <div class="lecture-container">
-        <div class="lecture-left">
-          <span class="lecture-left_play">
-            <svg class="bi bi-play-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="orange"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-           </svg>
-          </span>
-          <div class="lecture-left_top">
-            <div class="lecture-description">
-            </div>
-            <div class="lecture-title">
-              <a>Course Introduction</a>
-              <a class="arrow-down">
-                <span>down arrow</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="lecture-detail">
-          <a><span>Preview</span></a>
-          <span>7:19</span>
-        </div>
-      </div>
-
     </div>
 
   </div>
