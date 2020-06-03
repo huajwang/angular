@@ -29,20 +29,23 @@
     <div class="lectures-container" #lectures_container>
       <div class="lecture-container" *ngFor="let lecturePart of lecture.lectureParts;">
         <div class="lecture-left">
-          <span class="lecture-left_play">
-            <svg class="bi bi-play-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="orange"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-           </svg>
-          </span>
+          <a (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
+            <span class="lecture-left_play" *ngIf="lecturePart.type == 1">
+              <svg class="bi bi-play-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="orange"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+             </svg>
+            </span>
+          </a>
           <div class="lecture-left_top">
-            <div class="lecture-description">
-            </div>
             <div class="lecture-title">
-              <a>{{ lecturePart.partName }}</a>
-              <a class="arrow-down">
+              {{ lecturePart.partName }}
+              <!-- <a class="arrow-down">
                 <span>down arrow</span>
-              </a>
+              </a> -->
+            </div>
+            <div class="lecture-description">
+              {{ lecturePart.partDescription }}
             </div>
           </div>
 
@@ -52,11 +55,39 @@
           <a><span *ngIf="lecturePart.preview">Preview</span></a>
           <span>{{ lecturePart.length }}</span>
         </div>
+
       </div>
+
     </div>
 
   </div>
 </div> <!-- course content -->
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal" #videoModal>
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="closeVideoModal()">&times;</span>
+      <span>{{ videoTitle }}</span>
+    </div>
+    <div class="modal-body">
+      <video width="100%" controls #video>
+          <source [src]="videoUrl" type="video/mp4">
+          <source src="movie.ogg" type="video/ogg">
+          Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="modal-footer">
+      <span>课程</span>
+    </div>
+  </div>
+
+</div>
+
+
 
 <nav class="nav-bottom">
     <!-- <img src="/assets/img/python.jpg" class="navbar-bottom-image"> -->

@@ -20,10 +20,14 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   courseLectures: CourseLecture[] = [];
   lectures_expanded: boolean = false;
   subscription: Subscription;
+  videoUrl: String;
+  videoTitle: String;
 
   @ViewChildren('lectures_container') lecture_container: QueryList<ElementRef>;
   @ViewChild('content_plus') content_plus: ElementRef;
   @ViewChild('content_minus') content_minus: ElementRef;
+  @ViewChild('videoModal') videoModal: ElementRef;
+  @ViewChild('video') video: ElementRef;
 
   constructor(private courseService: CourseService,
               private route: ActivatedRoute,
@@ -66,6 +70,19 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     this.lectures_expanded ? 'none': 'block');
     this.renderer.setStyle(this.content_minus.nativeElement, 'display',
     this.lectures_expanded ? 'block': 'none');
+  }
+
+  playVideo(videoUrl: String, partName: String) {
+    this.videoUrl = videoUrl;
+    this.videoTitle = partName;
+    console.log(videoUrl);
+    this.video.nativeElement.load();
+    this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'block');
+  }
+
+  closeVideoModal() {
+      this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'none');
+      this.video.nativeElement.pause();
   }
 
 }
