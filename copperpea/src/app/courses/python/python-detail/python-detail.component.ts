@@ -6,6 +6,7 @@ import { Course } from "../../course.model";
 import { CourseContent } from "../../course-content.model";
 import { CourseLecture } from "../../course-lecture.model";
 import { CourseService } from "../../course.service";
+import { AuthService } from "../../../auth/auth.service";
 
 @Component({
   selector: 'app-python-detail',
@@ -32,7 +33,8 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   constructor(private courseService: CourseService,
               private route: ActivatedRoute,
               private router: Router,
-              private renderer: Renderer2) { }
+              private renderer: Renderer2,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -84,6 +86,14 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   closeVideoModal() {
       this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'none');
       this.video.nativeElement.pause();
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
+
+  isPaid() {
+    return false;
   }
 
 }

@@ -79,10 +79,13 @@ a.content-header {
 .lecture-title {
   display: flex;
   vertical-align: middle;
+  cursor: pointer;
 }
 
-
-
+.lecture-title-disabled {
+  display: flex;
+  vertical-align: middle;
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */

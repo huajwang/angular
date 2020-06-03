@@ -9,7 +9,7 @@
   </ul>
 </div>
 
-<h3>Course content</h3>
+<h3>课程内容</h3>
 <div class="course-content">
   <div class="course-lecture" *ngFor="let lecture of courseLectures; let i = index;">
     <a class="content-header" (click)="toggleLectures(i)">
@@ -29,21 +29,30 @@
     <div class="lectures-container" #lectures_container>
       <div class="lecture-container" *ngFor="let lecturePart of lecture.lectureParts;">
         <div class="lecture-left">
-          <a (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
-            <span class="lecture-left_play" *ngIf="lecturePart.type == 1">
-              <svg class="bi bi-play-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="orange"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-             </svg>
-            </span>
-          </a>
+          <span class="lecture-left_play" *ngIf="lecturePart.type == 1">
+            <svg class="bi bi-play-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="orange"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+           </svg>
+          </span>
           <div class="lecture-left_top">
-            <div class="lecture-title">
-              {{ lecturePart.partName }}
-              <!-- <a class="arrow-down">
-                <span>down arrow</span>
-              </a> -->
-            </div>
+            <ng-template [ngIf]="lecturePart.preview || isAuthenticated()">
+              <div class="lecture-title" (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
+                {{ lecturePart.partName }}
+                <!-- <a class="arrow-down">
+                  <span>down arrow</span>
+                </a> -->
+              </div>
+            </ng-template>
+            <ng-template [ngIf]="!lecturePart.preview">
+              <div class="lecture-title-disabled">
+                {{ lecturePart.partName }}
+                <!-- <a class="arrow-down">
+                  <span>down arrow</span>
+                </a> -->
+              </div>
+            </ng-template>
+
             <div class="lecture-description">
               {{ lecturePart.partDescription }}
             </div>
@@ -52,7 +61,8 @@
         </div>
 
         <div class="lecture-detail">
-          <a><span *ngIf="lecturePart.preview">Preview</span></a>
+          <a><span *ngIf="lecturePart.preview" (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
+            Preview</span></a>
           <span>{{ lecturePart.length }}</span>
         </div>
 
