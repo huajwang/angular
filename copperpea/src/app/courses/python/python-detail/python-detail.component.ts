@@ -78,6 +78,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     console.log(videoUrl);
     this.video.nativeElement.load();
     this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'block');
+    this.video.nativeElement.play();
   }
 
   closeVideoModal() {
