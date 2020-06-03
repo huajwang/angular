@@ -10,12 +10,14 @@ import { MeService } from "./me.service";
 })
 export class MeComponent implements OnInit {
   articles: Article[];
+  username: String;
 
   constructor(private meService: MeService) { }
 
   ngOnInit(): void {
-    this.meService.fetchArticles();
-    this.articles = this.meService.getArticles();
+    // this.meService.fetchArticles();
+    // this.articles = this.meService.getArticles();
+    this.username = this.meService.getUsername();
   }
 
 }
