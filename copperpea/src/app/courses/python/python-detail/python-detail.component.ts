@@ -17,6 +17,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
 
   id: number;
   course: Course;
+  paidStatus: boolean = false;
   courseContents: CourseContent[] = [];
   courseLectures: CourseLecture[] = [];
   lectures_expanded: boolean = false;
@@ -43,6 +44,17 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
         this.course = this.courseService.getCourse(this.id);
       }
     );
+
+    this.courseService.courseChanged.subscribe(
+      (courses: Course[]) => {
+        if (this.isAuthenticated()) {
+          this.authService.isCoursePaid(this.course.courseId);
+        }
+
+      }
+    );
+
+
     this.subscription = this.courseService.courseContentChanged.subscribe(
       (courseContents: CourseContent[]) => {
         this.courseContents = courseContents;
@@ -55,8 +67,27 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.courseService.getCourseContents(+this.course.courseId);
-    this.courseService.getCourseLectures(+this.course.courseId);
+    this.subscription = this.authService.paidStatusChanged.subscribe(
+      (paidStatus) => {
+        this.paidStatus = paidStatus;
+      }
+    );
+
+    if (!this.course) { // if access address directly by /courses/python/0, need to get courses first
+      this.subscription = this.courseService.courseChanged.subscribe(
+        (courses: Course[]) => {
+          this.course =  courses[this.id];
+          this.courseService.getCourseContents(this.course.courseId);
+          this.courseService.getCourseLectures(this.course.courseId);
+        }
+      );
+      this.courseService.getCourses("python");
+    }
+
+
+    this.courseService.getCourseContents(this.course.courseId);
+    this.courseService.getCourseLectures(this.course.courseId);
+
   }
 
   ngOnDestroy() {
@@ -64,7 +95,6 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   }
 
   toggleLectures(idx: number) {
-    console.log(this.lecture_container.length)
     this.lectures_expanded = !this.lectures_expanded;
     this.renderer.setStyle(this.lecture_container.toArray()[idx].nativeElement, 'display',
     this.lectures_expanded ? 'block': 'none');
@@ -77,7 +107,6 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   playVideo(videoUrl: String, partName: String) {
     this.videoUrl = videoUrl;
     this.videoTitle = partName;
-    console.log(videoUrl);
     this.video.nativeElement.load();
     this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'block');
     this.video.nativeElement.play();
@@ -90,10 +119,6 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
 
   isAuthenticated() {
     return this.authService.isAuthenticated();
-  }
-
-  isPaid() {
-    return false;
   }
 
 }

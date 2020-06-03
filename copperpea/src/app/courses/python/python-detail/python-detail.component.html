@@ -1,6 +1,6 @@
 <p>{{ course.courseName }}</p>
 <div class="what-you-get-content">
-  <div class="what-you-learn_title">What you'll learn</div>
+  <div class="what-you-learn_title">课程内容</div>
   <ul class="what-you-learn_items">
     <li class="what-you-learn_item" *ngFor="let courseContent of courseContents;">
         <i class="fa fa-check"></i>
@@ -36,7 +36,7 @@
            </svg>
           </span>
           <div class="lecture-left_top">
-            <ng-template [ngIf]="lecturePart.preview || isAuthenticated()">
+            <ng-template [ngIf]="lecturePart.preview || paidStatus">
               <div class="lecture-title" (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
                 {{ lecturePart.partName }}
                 <!-- <a class="arrow-down">
@@ -44,7 +44,7 @@
                 </a> -->
               </div>
             </ng-template>
-            <ng-template [ngIf]="!lecturePart.preview">
+            <ng-template [ngIf]="!(lecturePart.preview || paidStatus)">
               <div class="lecture-title-disabled">
                 {{ lecturePart.partName }}
                 <!-- <a class="arrow-down">
@@ -61,7 +61,7 @@
         </div>
 
         <div class="lecture-detail">
-          <a><span *ngIf="lecturePart.preview" (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
+          <a><span *ngIf="lecturePart.preview && !paidStatus" (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
             Preview</span></a>
           <span>{{ lecturePart.length }}</span>
         </div>

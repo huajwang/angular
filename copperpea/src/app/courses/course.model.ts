@@ -1,6 +1,6 @@
 export class Course {
 
-  public courseId: string;
+  public courseId: number;
   public courseName: string;
   public category: string;
   public courseDescription: string;
@@ -13,7 +13,7 @@ export class Course {
   public previewUrl: string;
 
 
-  constructor(courseId: string, courseName: string, category: string,
+  constructor(courseId: number, courseName: string, category: string,
               courseDescription: string, author: string, price: number,
               enrolled: number, ratings: number, lastUpdated: string,
               timeLength: number, previewUrl: string) {

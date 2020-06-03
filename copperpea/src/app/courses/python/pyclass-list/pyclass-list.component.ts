@@ -20,7 +20,6 @@ export class PyclassListComponent implements OnInit, OnDestroy {
     this.subscription = this.courseService.courseChanged.subscribe(
       (courses: Course[]) => {
         this.courses = courses;
-        console.log(this.courses);
       }
     );
     this.courseService.getCourses('python');
@@ -29,5 +28,5 @@ export class PyclassListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  
+
 }

@@ -1,13 +1,19 @@
 import { Injectable, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Subject } from "rxjs";
+
 import * as firebase from 'firebase';
+import { UserCoursePay } from "../courses/user-course-pay.model";
 
 @Injectable()
 export class AuthService implements OnInit {
   token = null;
-  username: String = '';
+  username: string = '';
+  paidStatusChanged = new Subject<boolean>();
+  payCheckUrl = "http://localhost:8080/edu/payCheck";
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private httpClient: HttpClient) {}
 
   ngOnInit(): void {
   }
@@ -60,4 +66,32 @@ export class AuthService implements OnInit {
     return this.username;
   }
 
+  isCoursePaid(courseId: number) {
+    if (this.username != '') {
+      const user_name = this.username;
+      const options = {
+        params: new HttpParams().append('username', user_name).append('courseId', courseId.toString())
+      };
+
+      this.httpClient.get<UserCoursePay[]>(this.payCheckUrl, options).subscribe(
+        (paidCourses: UserCoursePay[]) => {
+          console.log(paidCourses);
+          let paidStatus = false;
+          for (let paidCourse of paidCourses) {
+            if (paidCourse.courseId == courseId) {
+              paidStatus = true;
+              break;
+            }
+          }
+          this.paidStatusChanged.next(paidStatus);
+        }
+      );
+
+    } else {
+      return false;
+    }
+    // 1. get current user's username (email)
+    // look up t_edu_user and get user_id
+    // look up t_edu_course_pay to see if the record exists
+  }
 }
