@@ -20,14 +20,14 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   paidStatus: boolean = false;
   courseContents: CourseContent[] = [];
   courseLectures: CourseLecture[] = [];
-  lectures_expanded: boolean = false;
+  lectures_expanded: boolean[] = [];
   subscription: Subscription;
   videoUrl: String;
   videoTitle: String;
 
-  @ViewChildren('lectures_container') lecture_container: QueryList<ElementRef>;
-  @ViewChild('content_plus') content_plus: ElementRef;
-  @ViewChild('content_minus') content_minus: ElementRef;
+  @ViewChildren('lectures_container') lectures_container: QueryList<ElementRef>;
+  @ViewChildren('content_plus') content_plus: QueryList<ElementRef>;
+  @ViewChildren('content_minus') content_minus: QueryList<ElementRef>;
   @ViewChild('videoModal') videoModal: ElementRef;
   @ViewChild('video') video: ElementRef;
 
@@ -95,13 +95,13 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   }
 
   toggleLectures(idx: number) {
-    this.lectures_expanded = !this.lectures_expanded;
-    this.renderer.setStyle(this.lecture_container.toArray()[idx].nativeElement, 'display',
-    this.lectures_expanded ? 'block': 'none');
-    this.renderer.setStyle(this.content_plus.nativeElement, 'display',
-    this.lectures_expanded ? 'none': 'block');
-    this.renderer.setStyle(this.content_minus.nativeElement, 'display',
-    this.lectures_expanded ? 'block': 'none');
+    this.lectures_expanded[idx] = !this.lectures_expanded[idx];
+    this.renderer.setStyle(this.lectures_container.toArray()[idx].nativeElement, 'display',
+    this.lectures_expanded[idx] ? 'block': 'none');
+    this.renderer.setStyle(this.content_plus.toArray()[idx].nativeElement, 'display',
+    this.lectures_expanded[idx] ? 'none': 'block');
+    this.renderer.setStyle(this.content_minus.toArray()[idx].nativeElement, 'display',
+    this.lectures_expanded[idx] ? 'block': 'none');
   }
 
   playVideo(videoUrl: String, partName: String) {
