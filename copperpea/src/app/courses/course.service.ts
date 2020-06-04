@@ -12,14 +12,12 @@ import { CourseLecture } from "./course-lecture.model";
 export class CourseService {
 
   courseUrl = 'http://localhost:8080/edu/courses';
-  courseContentUrl = 'http://localhost:8080/edu/course_content';
   courseLectureUrl = 'http://localhost:8080/edu/courses/';
 
   categoryChanged = new Subject<string>();
 
   courseChanged = new Subject<Course>();
   coursesChanged = new Subject<Course[]>();
-  courseContentChanged = new Subject<CourseContent[]>();
   courseLectureChanged = new Subject<CourseLecture[]>();
 
   constructor(private http: HttpClient) {}
@@ -44,18 +42,6 @@ export class CourseService {
   getCourse(id: number) {
     this.courseChanged.next(this.pyCourses[id]);
     return this.pyCourses[id];
-  }
-
-  getCourseContents(courseId: number) {
-    const options = {
-      params: new HttpParams().append('courseId', courseId.toString())
-    };
-
-    this.http.get<CourseContent[]>(this.courseContentUrl, options)
-      .subscribe((courseContents: CourseContent[]) => {
-        this.courseContents = courseContents;
-        this.courseContentChanged.next(this.courseContents.slice());
-      });
   }
 
   getCourseLectures(courseId: number) {

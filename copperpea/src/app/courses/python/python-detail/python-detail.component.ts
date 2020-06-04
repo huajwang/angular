@@ -3,7 +3,6 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Subscription } from "rxjs";
 
 import { Course } from "../../course.model";
-import { CourseContent } from "../../course-content.model";
 import { CourseLecture } from "../../course-lecture.model";
 import { CourseService } from "../../course.service";
 import { AuthService } from "../../../auth/auth.service";
@@ -18,7 +17,6 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   id: number = 0;
   course: Course;
   paidStatus: boolean = false;
-  courseContents: CourseContent[] = [];
   courseLectures: CourseLecture[] = [];
   lectures_expanded: boolean[] = [];
   subscription: Subscription;
@@ -51,8 +49,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
 
     this.courseService.courseChanged.subscribe(
       (course: Course) => {
-        // get course content and lectures of the new course
-        this.courseService.getCourseContents(course.courseId);
+        // get lectures of the new course
         this.courseService.getCourseLectures(course.courseId);
         if (this.isAuthenticated()) {
           this.authService.isCoursePaid(course.courseId);
@@ -61,12 +58,6 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
       }
     );
 
-
-    this.subscription = this.courseService.courseContentChanged.subscribe(
-      (courseContents: CourseContent[]) => {
-        this.courseContents = courseContents;
-      }
-    );
 
     this.subscription = this.courseService.courseLectureChanged.subscribe(
       (courseLectures: CourseLecture[]) => {

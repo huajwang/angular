@@ -2,7 +2,7 @@
 <div class="what-you-get-content">
   <div class="what-you-learn_title">课程内容</div>
   <ul class="what-you-learn_items">
-    <li class="what-you-learn_item" *ngFor="let courseContent of courseContents;">
+    <li class="what-you-learn_item" *ngFor="let courseContent of course.courseContents;">
         <i class="fa fa-check"></i>
         <span>{{ courseContent.contentDescription }}</span>
     </li>
