@@ -67,7 +67,7 @@ export class AuthService implements OnInit {
   }
 
   isCoursePaid(courseId: number) {
-    if (this.username != '') {
+    if (this.isAuthenticated()) {
       const user_name = this.username;
       const options = {
         params: new HttpParams().append('username', user_name).append('courseId', courseId.toString())
@@ -89,8 +89,5 @@ export class AuthService implements OnInit {
     } else {
       return false;
     }
-    // 1. get current user's username (email)
-    // look up t_edu_user and get user_id
-    // look up t_edu_course_pay to see if the record exists
   }
 }
