@@ -21,9 +21,8 @@ export class PyclassComponent implements OnInit {
   //   return candy instanceof Course;
   // }
 
-  changeCourse() {
-    this.courseService.getCourseContents(this.course.courseId);
-    this.courseService.getCourseLectures(this.course.courseId);
-
-  }
+  // changeCourse() {
+  //   this.courseService.getCourseContents(this.course.courseId);
+  //   this.courseService.getCourseLectures(this.course.courseId);
+  // }
 }

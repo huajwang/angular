@@ -10,7 +10,7 @@ import { PythonDetailComponent } from "./python/python-detail/python-detail.comp
 
 const coursesRoutes: Routes = [
   {path: '', component: CoursesComponent},
-  {path: 'python', component: PythonComponent, children:[
+  {path: ':category', component: PythonComponent, children:[
     {path: '', component: PythonStartComponent},
     {path: ':id', component: PythonDetailComponent},
   ]},

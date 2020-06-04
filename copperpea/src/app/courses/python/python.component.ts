@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from "@angular/router";
+import { CourseService } from "../course.service";
 
 @Component({
   selector: 'app-python',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PythonComponent implements OnInit {
 
-  constructor() { }
+  category: string;
+
+  constructor(private route: ActivatedRoute, private courseService: CourseService) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.category = params['category'];
+        this.courseService.categoryChanged.next(this.category);
+      }
+    );
   }
 
 }

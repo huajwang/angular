@@ -15,7 +15,7 @@ import { AuthService } from "../../../auth/auth.service";
 })
 export class PythonDetailComponent implements OnInit, OnDestroy {
 
-  id: number;
+  id: number = 0;
   course: Course;
   paidStatus: boolean = false;
   courseContents: CourseContent[] = [];
@@ -24,6 +24,9 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   videoUrl: String;
   videoTitle: String;
+
+  url_category: string;
+  url_index: string;
 
   @ViewChildren('lectures_container') lectures_container: QueryList<ElementRef>;
   @ViewChildren('content_plus') content_plus: QueryList<ElementRef>;
@@ -38,6 +41,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
               private authService: AuthService) { }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
@@ -46,9 +50,12 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     );
 
     this.courseService.courseChanged.subscribe(
-      (courses: Course[]) => {
+      (course: Course) => {
+        // get course content and lectures of the new course
+        this.courseService.getCourseContents(course.courseId);
+        this.courseService.getCourseLectures(course.courseId);
         if (this.isAuthenticated()) {
-          this.authService.isCoursePaid(this.course.courseId);
+          this.authService.isCoursePaid(course.courseId);
         }
 
       }
@@ -60,34 +67,23 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
         this.courseContents = courseContents;
       }
     );
+
     this.subscription = this.courseService.courseLectureChanged.subscribe(
       (courseLectures: CourseLecture[]) => {
         this.courseLectures = courseLectures;
-        console.log(this.courseLectures);
       }
     );
 
     this.subscription = this.authService.paidStatusChanged.subscribe(
       (paidStatus) => {
         this.paidStatus = paidStatus;
+        console.log(this.paidStatus);
       }
     );
 
-    if (!this.course) { // if access address directly by /courses/python/0, need to get courses first
-      this.subscription = this.courseService.courseChanged.subscribe(
-        (courses: Course[]) => {
-          this.course =  courses[this.id];
-          this.courseService.getCourseContents(this.course.courseId);
-          this.courseService.getCourseLectures(this.course.courseId);
-        }
-      );
-      this.courseService.getCourses("python");
+    if (!this.course) { // if access address directly by e.g. /courses/python/0
+      this.router.navigate(['../'], {relativeTo: this.route});
     }
-
-
-    this.courseService.getCourseContents(this.course.courseId);
-    this.courseService.getCourseLectures(this.course.courseId);
-
   }
 
   ngOnDestroy() {

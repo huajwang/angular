@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Subject } from "rxjs";
 
 import { Course } from "./course.model";
@@ -14,7 +14,11 @@ export class CourseService {
   courseUrl = 'http://localhost:8080/edu/courses';
   courseContentUrl = 'http://localhost:8080/edu/course_content';
   courseLectureUrl = 'http://localhost:8080/edu/courses/';
-  courseChanged = new Subject<Course[]>();
+
+  categoryChanged = new Subject<string>();
+
+  courseChanged = new Subject<Course>();
+  coursesChanged = new Subject<Course[]>();
   courseContentChanged = new Subject<CourseContent[]>();
   courseLectureChanged = new Subject<CourseLecture[]>();
 
@@ -25,21 +29,29 @@ export class CourseService {
   courseContents: CourseContent[] = [];
   courseLectures: CourseLecture[] = [];
 
-  getCourses(courseName: String) {
-    this.http.get<Course[]>(this.courseUrl)
+  getCourses(courseCategory: string) {
+    const options = {
+      params: new HttpParams().append('courseCategory', courseCategory)
+    };
+    this.http.get<Course[]>(this.courseUrl, options)
       .subscribe((courses: Course[]) => {
         this.pyCourses = courses;
-        this.courseChanged.next(this.pyCourses.slice());
+        this.coursesChanged.next(this.pyCourses.slice());
       });
   }
 
 
   getCourse(id: number) {
+    this.courseChanged.next(this.pyCourses[id]);
     return this.pyCourses[id];
   }
 
   getCourseContents(courseId: number) {
-    this.http.get<CourseContent[]>(this.courseContentUrl)
+    const options = {
+      params: new HttpParams().append('courseId', courseId.toString())
+    };
+
+    this.http.get<CourseContent[]>(this.courseContentUrl, options)
       .subscribe((courseContents: CourseContent[]) => {
         this.courseContents = courseContents;
         this.courseContentChanged.next(this.courseContents.slice());

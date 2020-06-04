@@ -75,7 +75,6 @@ export class AuthService implements OnInit {
 
       this.httpClient.get<UserCoursePay[]>(this.payCheckUrl, options).subscribe(
         (paidCourses: UserCoursePay[]) => {
-          console.log(paidCourses);
           let paidStatus = false;
           for (let paidCourse of paidCourses) {
             if (paidCourse.courseId == courseId) {
