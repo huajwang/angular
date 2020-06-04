@@ -13,7 +13,7 @@ export class CourseService {
 
   courseUrl = 'http://localhost:8080/edu/courses';
   courseContentUrl = 'http://localhost:8080/edu/course_content';
-  courseLectureUrl = 'http://localhost:8080/edu/courses/1/lectures';
+  courseLectureUrl = 'http://localhost:8080/edu/courses/';
   courseChanged = new Subject<Course[]>();
   courseContentChanged = new Subject<CourseContent[]>();
   courseLectureChanged = new Subject<CourseLecture[]>();
@@ -47,7 +47,7 @@ export class CourseService {
   }
 
   getCourseLectures(courseId: number) {
-    this.http.get<CourseLecture[]>(this.courseLectureUrl)
+    this.http.get<CourseLecture[]>(this.courseLectureUrl + courseId.toString() + "/lectures")
       .subscribe((courseLectures: CourseLecture[]) => {
         this.courseLectures = courseLectures;
         this.courseLectureChanged.next(this.courseLectures);
