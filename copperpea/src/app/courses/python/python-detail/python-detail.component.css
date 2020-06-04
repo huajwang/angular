@@ -86,6 +86,16 @@ a.content-header {
   display: flex;
   vertical-align: middle;
 }
+
+div.lecture-title {
+  font-size: 17px;
+}
+
+div.lecture-description {
+  font-weight:lighter;
+  font-style: italic;
+}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
