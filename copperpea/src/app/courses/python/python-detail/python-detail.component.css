@@ -162,6 +162,11 @@ div.lecture-description {
   background-color: black;
 }
 
+.text-modal-body {
+  background-color: white;
+  height: 400px;
+}
+
 .modal-footer {
   display: flex;
   justify-content: center;

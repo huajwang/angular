@@ -4,6 +4,7 @@ import { Subscription } from "rxjs";
 
 import { Course } from "../../course.model";
 import { CourseLecture } from "../../course-lecture.model";
+import { LecturePart } from "../../lecture-part.model";
 import { CourseService } from "../../course.service";
 import { AuthService } from "../../../auth/auth.service";
 
@@ -20,8 +21,11 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   courseLectures: CourseLecture[] = [];
   lectures_expanded: boolean[] = [];
   subscription: Subscription;
+
+  lecturePart_type: number;
   videoUrl: String;
-  videoTitle: String;
+  title: String;
+  part_content: String = "";
 
   url_category: string;
   url_index: string;
@@ -30,6 +34,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   @ViewChildren('content_plus') content_plus: QueryList<ElementRef>;
   @ViewChildren('content_minus') content_minus: QueryList<ElementRef>;
   @ViewChild('videoModal') videoModal: ElementRef;
+  @ViewChild('textModal') textModal: ElementRef;
   @ViewChild('video') video: ElementRef;
 
   constructor(private courseService: CourseService,
@@ -91,17 +96,31 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     this.lectures_expanded[idx] ? 'block': 'none');
   }
 
-  playVideo(videoUrl: String, partName: String) {
-    this.videoUrl = videoUrl;
-    this.videoTitle = partName;
-    this.video.nativeElement.load();
-    this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'block');
-    this.video.nativeElement.play();
+  play(lecturePart: LecturePart) {
+    this.lecturePart_type = lecturePart.type;
+    this.title = lecturePart.partName;
+    if (lecturePart.type == 1) {
+      this.videoUrl = lecturePart.videoUrl;
+      this.video.nativeElement.load();
+      this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'block');
+      this.video.nativeElement.play();
+    } else {
+
+      for (let lpc of lecturePart.lecturePartContents) {
+          this.part_content = this.part_content.concat(lpc.partContent.toString());
+      }
+      this.renderer.setStyle(this.textModal.nativeElement, 'display', 'block');
+    }
+
   }
 
   closeVideoModal() {
       this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'none');
       this.video.nativeElement.pause();
+  }
+
+  closeTextModal() {
+      this.renderer.setStyle(this.textModal.nativeElement, 'display', 'none');
   }
 
   isAuthenticated() {

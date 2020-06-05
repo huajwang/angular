@@ -37,7 +37,7 @@
           </span>
           <div class="lecture-left_top">
             <ng-template [ngIf]="lecturePart.preview || paidStatus">
-              <div class="lecture-title" (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
+              <div class="lecture-title" (click)="play(lecturePart)">
                 {{ lecturePart.partName }}
                 <!-- <a class="arrow-down">
                   <span>down arrow</span>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="lecture-detail">
-          <a><span *ngIf="lecturePart.preview && !paidStatus" (click)="playVideo(lecturePart.videoUrl, lecturePart.partName)">
+          <a><span *ngIf="lecturePart.preview && !paidStatus" (click)="play(lecturePart)">
             Preview</span></a>
           <span>{{ lecturePart.length }}</span>
         </div>
@@ -81,20 +81,35 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close" (click)="closeVideoModal()">&times;</span>
-      <span>{{ videoTitle }}</span>
+      <span>{{ title }}</span>
     </div>
     <div class="modal-body">
       <video width="100%" controls #video>
           <source [src]="videoUrl" type="video/mp4">
-          <source src="movie.ogg" type="video/ogg">
           Your browser does not support the video tag.
-        </video>
+      </video>
     </div>
     <div class="modal-footer">
       <span>课程</span>
     </div>
   </div>
+</div>
 
+<div id="textModal" class="modal" #textModal>
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="closeTextModal()">&times;</span>
+      <span>{{ title }}</span>
+    </div>
+    <div class="text-modal-body">
+      <p>{{ part_content }}</p>
+    </div>
+    <div class="modal-footer">
+      <span>课程</span>
+    </div>
+  </div>
 </div>
 
 
