@@ -39,6 +39,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   @ViewChild('textModal') textModal: ElementRef;
   @ViewChild('video') video: ElementRef;
 
+
   constructor(private courseService: CourseService,
               private route: ActivatedRoute,
               private router: Router,
@@ -51,6 +52,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
       (params: Params) => {
         this.id = +params['id'];
         this.course = this.courseService.getCourse(this.id);
+        this.courseService.getCourseLectures(this.course.courseId);
       }
     );
 
@@ -81,6 +83,12 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
 
     if (!this.course) { // if access address directly by e.g. /courses/python/0
       this.router.navigate(['../'], {relativeTo: this.route});
+    }
+  }
+
+  ngAfterViewInit() {
+    document.onclick = (event: any) : void => {
+      console.log(event.target.tagName);
     }
   }
 
