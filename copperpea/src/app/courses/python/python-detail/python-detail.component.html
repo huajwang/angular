@@ -104,7 +104,7 @@
       <span>{{ title }}</span>
     </div>
     <div class="text-modal-body">
-      <p>{{ part_content }}</p>
+      <p class="success" *ngFor="let part_content of part_contents">{{ part_content.partContent }}</p>
     </div>
     <div class="modal-footer">
       <span>课程</span>

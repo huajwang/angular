@@ -167,6 +167,11 @@ div.lecture-description {
   height: 400px;
 }
 
+p.success {
+  background-color: #ddffdd;
+  border-left: 5px solid #4CAF50;
+}
+
 .modal-footer {
   display: flex;
   justify-content: center;

@@ -5,6 +5,8 @@ import { Subscription } from "rxjs";
 import { Course } from "../../course.model";
 import { CourseLecture } from "../../course-lecture.model";
 import { LecturePart } from "../../lecture-part.model";
+import { LecturePartContent } from "../../lecture-part-content.model";
+
 import { CourseService } from "../../course.service";
 import { AuthService } from "../../../auth/auth.service";
 
@@ -25,7 +27,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
   lecturePart_type: number;
   videoUrl: String;
   title: String;
-  part_content: String = "";
+  part_contents: LecturePartContent[];
 
   url_category: string;
   url_index: string;
@@ -106,9 +108,8 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
       this.video.nativeElement.play();
     } else {
 
-      for (let lpc of lecturePart.lecturePartContents) {
-          this.part_content = this.part_content.concat(lpc.partContent.toString());
-      }
+      this.part_contents = lecturePart.lecturePartContents;
+
       this.renderer.setStyle(this.textModal.nativeElement, 'display', 'block');
     }
 
