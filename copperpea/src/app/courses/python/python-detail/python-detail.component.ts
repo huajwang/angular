@@ -141,4 +141,9 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     return this.authService.isAuthenticated();
   }
 
+  purchase(courseId: number) {
+    console.log(courseId);
+    this.router.navigate(['/checkout']);
+  }
+
 }

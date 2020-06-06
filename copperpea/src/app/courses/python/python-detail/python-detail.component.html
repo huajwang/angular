@@ -104,7 +104,8 @@
       <span>{{ title }}</span>
     </div>
     <div class="text-modal-body">
-      <p class="success" *ngFor="let part_content of part_contents">{{ part_content.partContent }}</p>
+      <h3>练习: </h3>
+      <pre *ngFor="let part_content of part_contents">{{ part_content.partContent }}</pre>
     </div>
     <div class="modal-footer">
       <span>课程</span>
@@ -120,10 +121,10 @@
       <div style="margin-right: 15px;">
         <span>30-Day Money-Back Guarantee</span>
       </div>
-      <button type="button" name="button" class="btn btn-danger" style="margin-right: 15px;">
+      <!-- <button type="button" name="button" class="btn btn-danger" style="margin-right: 15px;">
         <span>加入购物车</span>
-      </button>
-      <button type="button" name="button" class="btn btn-danger">
+      </button> -->
+      <button type="button" name="button" class="btn btn-danger" (click)="purchase(course.courseId)">
         <span>立即购买</span>
       </button>
   </div>

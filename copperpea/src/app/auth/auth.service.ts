@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Subject } from "rxjs";
 
@@ -18,7 +18,8 @@ export class AuthService implements OnInit {
   first_layer_verify_changed = new Subject<boolean>();
   second_layer_verify_changed = new Subject<boolean>();
 
-  constructor(private router: Router, private httpClient: HttpClient) {}
+  constructor(private router: Router, private httpClient: HttpClient,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
   }
@@ -53,7 +54,9 @@ export class AuthService implements OnInit {
     .then(
       response => {
         if (studentLogin) {
-          this.router.navigate(['/me']);
+          let returnUrl = this.route.snapshot.queryParams['returnUrl'];
+          console.log(returnUrl);
+          this.router.navigateByUrl(returnUrl);
         } else {
           this.lookupTeacher(email);
         }

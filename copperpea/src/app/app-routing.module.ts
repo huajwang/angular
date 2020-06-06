@@ -17,9 +17,9 @@ const appRoutes: Routes = [
       () => import('./teacher/teacher.module').then(m => m.TeacherModule)},
   {path: 'me', loadChildren:
       () => import('./me/me.module').then(m => m.MeModule)},
+  {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]},
   {path: 'contact', component: ContactComponent},
   {path: 'shopping-list', component: ShoppingListComponent},
-  {path: 'checkout', component: CheckoutComponent}
 ];
 
 @NgModule({
