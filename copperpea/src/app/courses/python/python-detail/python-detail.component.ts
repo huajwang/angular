@@ -53,13 +53,18 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
         this.id = +params['id'];
         this.course = this.courseService.getCourse(this.id);
         this.courseService.getCourseLectures(this.course.courseId);
+        // need to check paid status here as well
+        if (this.isAuthenticated()) {
+          console.log("route.params: alreay authenticated, check isCoursePaid...");
+          this.authService.isCoursePaid(this.course.courseId);
+        }
       }
     );
 
     this.courseService.courseChanged.subscribe(
       (course: Course) => {
-        // get lectures of the new course
         this.courseService.getCourseLectures(course.courseId);
+        // another place need to check paid status
         if (this.isAuthenticated()) {
           this.authService.isCoursePaid(course.courseId);
         }
@@ -86,11 +91,11 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngAfterViewInit() {
-    document.onclick = (event: any) : void => {
-      console.log(event.target.tagName);
-    }
-  }
+  // ngAfterViewInit() {
+  //   document.onclick = (event: any) : void => {
+  //     console.log(event.target.tagName);
+  //   }
+  // }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

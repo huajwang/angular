@@ -12,6 +12,11 @@ export class AuthService implements OnInit {
   username: string = '';
   paidStatusChanged = new Subject<boolean>();
   payCheckUrl = "http://localhost:8080/edu/payCheck";
+  lookupTeacherUrl = "http://localhost:8080/edu/teacher/lookup"
+  first_layer_verify: boolean = false;
+  second_layer_verify: boolean = false;
+  first_layer_verify_changed = new Subject<boolean>();
+  second_layer_verify_changed = new Subject<boolean>();
 
   constructor(private router: Router, private httpClient: HttpClient) {}
 
@@ -25,11 +30,35 @@ export class AuthService implements OnInit {
     );
   }
 
-  loginUser(email: string, password: string) {
+  async isTeacherAccount(email: string) {
+    const options = {params: new HttpParams().append("teacherName", email)};
+    return await this.httpClient.get<boolean>(this.lookupTeacherUrl, options).toPromise();
+  }
+
+  lookupTeacher(email: string) {
+    const options = {params: new HttpParams().append("teacherName", email)};
+    this.httpClient.get<boolean>(this.lookupTeacherUrl, options).subscribe(
+      (isTeacher: boolean) => {
+        if (isTeacher) {
+          this.router.navigate(['/teacher']);
+          this.second_layer_verify = true;
+          this.second_layer_verify_changed.next(true);
+        }
+      }
+    );
+  }
+
+  loginUser(email: string, password: string, studentLogin: boolean) {
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(
       response => {
-        this.router.navigate(['/me']);
+        if (studentLogin) {
+          this.router.navigate(['/me']);
+        } else {
+          this.lookupTeacher(email);
+        }
+        this.first_layer_verify = true;
+        this.first_layer_verify_changed.next(true);
         this.username = firebase.auth().currentUser.email;
         firebase.auth().currentUser.getIdToken()
         .then(
@@ -56,10 +85,16 @@ export class AuthService implements OnInit {
     return this.token != null;
   }
 
+  isTeacherAuthenticated() {
+    return this.first_layer_verify && this.second_layer_verify;
+  }
+
   logout() {
     firebase.auth().signOut();
     this.router.navigate(['/']);
     this.token = null;
+    this.first_layer_verify_changed.next(false);
+    this.second_layer_verify_changed.next(false);
   }
 
   getUsername() {
@@ -67,6 +102,7 @@ export class AuthService implements OnInit {
   }
 
   isCoursePaid(courseId: number) {
+
     if (this.isAuthenticated()) {
       const user_name = this.username;
       const options = {

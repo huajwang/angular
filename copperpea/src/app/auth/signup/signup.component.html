@@ -1,44 +1,24 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onSignup(f)" #f="ngForm">
-        <div class="form-group">
-          <label for="email">email:</label>
-          <input type="text" id="email" name="email" class="form-control" ngModel>
-        </div>
-        <div class="form-group">
-          <label for="password">password:</label>
-          <input type="text" id="password" name="password" class="form-control" ngModel>
-        </div>
-        <button type="submit" name="button" class="btn btn-primary"
-        [disabled]="!f.valid">注册</button>
-      </form>
-    </div>
-  </div>
-</div> -->
-
 <div class="bg-img">
-  <form (ngSubmit)="onSignup(f)" #f="ngForm" style="border:1px solid #ccc" class="form-container">
-    <div>
-      <h3>注册</h3>
-      <label for="email"><b>电子邮件</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required ngModel>
+  <form class="form-container" (ngSubmit)="onSignup(f)" #f="ngForm">
 
-      <label for="password"><b>密码</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required ngModel>
+    <h3>注册</h3>
+    <mat-form-field>
+      <input matInput placeholder="电子邮件" name="email" required ngModel email>
+    </mat-form-field>
 
-      <label for="psw-repeat"><b>重输密码</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <mat-form-field>
+      <input type="password" matInput placeholder="密码" name="password" required ngModel>
+    </mat-form-field>
 
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> 记住我
-      </label>
+    <label class="remember-me">
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> 记住我
+    </label>
 
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-    </div>
-    <div class="clearfix">
-      <button type="button" class="cancelbtn" routerLink="/signin">取消</button>
-      <button type="submit" class="signupbtn" name="button" [disabled]="!f.valid">注册</button>
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="bottom-button">
+      <button mat-raised-button color="primary" routerLink="/signin">取消</button>
+      <button mat-raised-button color="accent" [disabled]="!f.valid">注册</button>
     </div>
   </form>
 </div>

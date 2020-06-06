@@ -13,6 +13,30 @@
   justify-content: center;
 }
 
+.login-top-tab {
+  display: flex;
+}
+
+.student-tab {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.teacher-tab {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.active-tab {
+  background-color: gray;
+}
+
 /* Add styles to the form container */
 .form-container {
   display: flex;

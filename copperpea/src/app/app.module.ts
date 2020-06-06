@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,6 +9,7 @@ import { ShoppingListModule } from "./shopping-list/shopping-list.module";
 import { AuthModule } from "./auth/auth.module";
 import { CoreModule } from "./core/core.module";
 import { MeModule } from "./me/me.module";
+import { TeacherModule } from "./teacher/teacher.module";
 
 import { AppComponent } from './app.component';
 import { ShoppingListService } from "./shopping-list/shopping-list.service";
@@ -19,6 +21,7 @@ import { MeService } from "./me/me.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthGuardService } from "./auth/auth-guard.service";
+import { TeacherAuthGuardService } from "./auth/teacher-auth-guard.service";
 
 
 
@@ -28,6 +31,7 @@ import { AuthGuardService } from "./auth/auth-guard.service";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
@@ -36,10 +40,12 @@ import { AuthGuardService } from "./auth/auth-guard.service";
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    MeModule
+    MeModule,
+    TeacherModule
   ],
   providers: [ShoppingListService, RecipeService,
-              StoreService, AuthService, AuthGuardService, ChatService, MeService],
+              StoreService, AuthService, AuthGuardService, ChatService, MeService,
+              TeacherAuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

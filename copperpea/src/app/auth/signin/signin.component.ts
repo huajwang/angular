@@ -10,14 +10,36 @@ import { AuthService } from "../auth.service";
 })
 export class SigninComponent implements OnInit {
 
+  student_login: boolean = true;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  login(form: NgForm) {
+  // mark login as async as we use await to make this call somewhat sync call
+  async login(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.loginUser(email, password);
+    // first check if account is in student or teacher accounts
+    if (!this.student_login) {
+      // wait the Http service call return 
+      let isTeacherAccount: boolean = await this.authService.isTeacherAccount(email);
+      if (!isTeacherAccount) {
+        console.log('this is not teacher account');
+        // TODO show error message on signin dialog
+        return;
+      }
+    }
+
+    this.authService.loginUser(email, password, this.student_login);
+  }
+
+  studentLogin() {
+    this.student_login = true;
+  }
+
+  teacherLogin() {
+    this.student_login = false;
   }
 }

@@ -15,43 +15,35 @@
 }
 
 .form-container {
-  margin: 20px;
-  max-width: 500px;
-  width: 50%;
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
   background-color: white;
   opacity: 1;
 }
 
-
-h3 {
-  text-align: center;
-}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
+mat-form-field {
   width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+.remember-me {
+  align-self: flex-start;
 }
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
+  margin: 8px 4px;
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+}
+
+.bottom-button {
+  display: flex;
+  width: 90%;
 }
 
 button:hover {
@@ -59,23 +51,9 @@ button:hover {
 }
 
 /* Extra styles for the cancel button */
-.cancelbtn {
+/* .cancelbtn {
   padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+} */
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {

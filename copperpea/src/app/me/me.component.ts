@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Article } from "./article.model";
 import { MeService } from "./me.service";
 
 @Component({
@@ -9,15 +7,13 @@ import { MeService } from "./me.service";
   styleUrls: ['./me.component.css']
 })
 export class MeComponent implements OnInit {
-  articles: Article[];
   username: String;
 
   constructor(private meService: MeService) { }
 
   ngOnInit(): void {
-    // this.meService.fetchArticles();
-    // this.articles = this.meService.getArticles();
     this.username = this.meService.getUsername();
   }
+
 
 }

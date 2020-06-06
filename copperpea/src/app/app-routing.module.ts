@@ -13,6 +13,8 @@ const appRoutes: Routes = [
       () => import('./recipes/recipes.module').then(m => m.RecipesModule)},
   {path: 'courses', loadChildren:
       () => import('./courses/courses.module').then(m => m.CoursesModule)},
+  {path: 'teacher', loadChildren:
+      () => import('./teacher/teacher.module').then(m => m.TeacherModule)},
   {path: 'me', loadChildren:
       () => import('./me/me.module').then(m => m.MeModule)},
   {path: 'contact', component: ContactComponent},

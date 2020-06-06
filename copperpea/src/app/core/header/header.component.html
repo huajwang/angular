@@ -19,7 +19,7 @@
         <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <ng-template [ngIf]="!isAuthenticated()">
+        <ng-template [ngIf]="!first_layer_verify">
           <li><a routerLink="/signin">登录</a></li>
         </ng-template>
         <!-- <li class="dropdown" appDropdown *ngIf="isAuthenticated()">
@@ -33,10 +33,10 @@
                 (click)="fetchData()">Fetch data</a></li>
           </ul>
         </li> -->
-        <li routerLinkActive="active" *ngIf="isAuthenticated()">
+        <li routerLinkActive="active" *ngIf="first_layer_verify && !second_layer_verify">
           <a routerLink="/me">个人中心</a>
         </li>
-        <li><a *ngIf="isAuthenticated()" (click)="logout()"
+        <li><a *ngIf="first_layer_verify" (click)="logout()"
           style="cursor: pointer;">Logout</a></li>
       </ul>
     </div>
