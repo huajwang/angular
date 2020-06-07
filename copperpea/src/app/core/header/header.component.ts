@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from "@angular/common/http";
 import { Subscription } from "rxjs";
 
-import { StoreService } from "../../shared/store.service";
 import { AuthService } from "../../auth/auth.service";
 
 @Component({
@@ -16,8 +15,7 @@ export class HeaderComponent implements OnInit {
   second_layer_verify: boolean = false;
   subscription: Subscription;
 
-  constructor(private storeService: StoreService,
-              private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.subscription = this.authService.first_layer_verify_changed.subscribe(
@@ -31,18 +29,6 @@ export class HeaderComponent implements OnInit {
       }
     );
 
-  }
-
-  storeData() {
-    this.storeService.storeData().subscribe(
-      (response: HttpResponse<any>) => {
-        console.log(response.body);
-      }
-    );
-  }
-
-  fetchData() {
-    this.storeService.fetchData();
   }
 
   isAuthenticated() {
