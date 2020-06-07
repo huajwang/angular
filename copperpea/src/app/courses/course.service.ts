@@ -35,13 +35,14 @@ export class CourseService {
       .subscribe((courses: Course[]) => {
         this.pyCourses = courses;
         this.coursesChanged.next(this.pyCourses.slice());
+        localStorage.setItem("courses", JSON.stringify(this.pyCourses));
       });
   }
 
 
   getCourse(id: number) {
     this.courseChanged.next(this.pyCourses[id]);
-    return this.pyCourses[id];
+    return JSON.parse(localStorage.getItem("courses"))[id];
   }
 
   getCourseLectures(courseId: number) {

@@ -16,7 +16,7 @@ import { AuthService } from "../../../auth/auth.service";
   styleUrls: ['./python-detail.component.css']
 })
 export class PythonDetailComponent implements OnInit, OnDestroy {
-
+  // Notice: id is the course index in the array, not courseId
   id: number = 0;
   course: Course;
   paidStatus: boolean = false;
@@ -141,9 +141,9 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     return this.authService.isAuthenticated();
   }
 
-  purchase(courseId: number) {
-    console.log(courseId);
-    this.router.navigate(['/checkout']);
+  // idx is the item index in the array
+  purchase(idx: number) {
+    this.router.navigate(['/checkout'], { queryParams: {'idx': idx} });
   }
 
 }

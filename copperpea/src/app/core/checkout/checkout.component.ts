@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { Course } from "../../courses/course.model";
+import { CourseService } from "../../courses/course.service";
 
 @Component({
   selector: 'app-checkout',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  course: Course;
+  constructor(private route: ActivatedRoute, private courseService: CourseService) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(
+      (params) => {
+        this.course = this.courseService.getCourse(+params['idx']);
+      }
+    );
   }
 
 }
