@@ -55,7 +55,7 @@ export class AuthService implements OnInit {
     .then(
       response => {
         if (studentLogin) {
-          let returnUrl = this.route.snapshot.queryParams['returnUrl'];
+          let returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/me';
           this.router.navigateByUrl(returnUrl);
         } else {
           this.lookupTeacher(email);
