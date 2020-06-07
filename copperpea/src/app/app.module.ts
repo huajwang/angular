@@ -14,16 +14,19 @@ import { AppComponent } from './app.component';
 import { AuthService } from "./auth/auth.service";
 import { ChatService } from "./core/home/chat.service";
 import { MeService } from "./me/me.service";
+import { FileService } from "./shared/file.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { TeacherAuthGuardService } from "./auth/teacher-auth-guard.service";
+import { DownloadComponent } from './download/download.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DownloadComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { TeacherAuthGuardService } from "./auth/teacher-auth-guard.service";
     TeacherModule
   ],
   providers: [AuthService, AuthGuardService, ChatService, MeService,
-              TeacherAuthGuardService],
+              TeacherAuthGuardService, FileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

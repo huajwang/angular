@@ -9,6 +9,7 @@ import { PyclassListComponent } from './python/pyclass-list/pyclass-list.compone
 import { PyclassComponent } from './python/pyclass-list/pyclass/pyclass.component';
 import { PythonStartComponent } from './python/python-start/python-start.component';
 import { PythonDetailComponent } from './python/python-detail/python-detail.component';
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule ({
   declarations: [
@@ -22,6 +23,7 @@ import { PythonDetailComponent } from './python/python-detail/python-detail.comp
   imports: [
     CommonModule,
     CoursesRoutingModule,
+    SharedModule
   ],
   providers: [CourseService]
 })

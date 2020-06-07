@@ -1,0 +1,14 @@
+ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+}
+
+.a-container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+mat-card-content {
+  background-color: yellow;
+}
