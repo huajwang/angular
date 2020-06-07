@@ -17,6 +17,7 @@ export class AuthService implements OnInit {
   second_layer_verify: boolean = false;
   first_layer_verify_changed = new Subject<boolean>();
   second_layer_verify_changed = new Subject<boolean>();
+  errorMsgChanged = new Subject<string>();
 
   constructor(private router: Router, private httpClient: HttpClient,
               private route: ActivatedRoute) {}
@@ -56,7 +57,6 @@ export class AuthService implements OnInit {
         if (studentLogin) {
           let returnUrl = this.route.snapshot.queryParams['returnUrl'];
           this.router.navigateByUrl(returnUrl);
-          console.log("should not see this");
         } else {
           this.lookupTeacher(email);
         }
@@ -71,7 +71,8 @@ export class AuthService implements OnInit {
     )
     .catch(
       error => {
-        console.log(error)
+        // error.code
+        this.errorMsgChanged.next(error.message);
       }
     );
   }
@@ -139,12 +140,5 @@ export class AuthService implements OnInit {
       console.log("send password reset email failed.")
     });
   }
-
-
-
-
-
-
-
 
 }

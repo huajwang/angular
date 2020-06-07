@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth.service";
 
@@ -8,14 +9,24 @@ import { AuthService } from "../auth.service";
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, OnDestroy {
 
   student_login: boolean = true;
   errorMsg: string ="";
+  subscription: Subscription;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.subscription = this.authService.errorMsgChanged.subscribe(
+    (errorMsg: string) => {
+      this.errorMsg = "账号或者密码错误!";
+    }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   // mark login as async as we use await to make this call somewhat sync call
