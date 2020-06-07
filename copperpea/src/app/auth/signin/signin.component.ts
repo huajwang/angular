@@ -11,6 +11,7 @@ import { AuthService } from "../auth.service";
 export class SigninComponent implements OnInit {
 
   student_login: boolean = true;
+  errorMsg: string ="";
 
   constructor(private authService: AuthService) { }
 
@@ -23,10 +24,11 @@ export class SigninComponent implements OnInit {
     const password = form.value.password;
     // first check if account is in student or teacher accounts
     if (!this.student_login) {
-      // wait the Http service call return 
+      // wait the Http service call return
       let isTeacherAccount: boolean = await this.authService.isTeacherAccount(email);
       if (!isTeacherAccount) {
         console.log('this is not teacher account');
+        this.errorMsg = "该教师账号不存在!";
         // TODO show error message on signin dialog
         return;
       }

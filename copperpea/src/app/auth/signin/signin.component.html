@@ -18,6 +18,7 @@
         <input type="password" id="password" name="password" class="form-control" ngModel>
       </div>
     </div>
+    <span *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</span>
     <div></div>
     <div class="btn-bottom">
       <button type="submit" name="button" class="btn"

@@ -8,7 +8,7 @@
       </button>
       <a routerLink="/" class="navbar-brand">铜豌豆软件教育</a>
     </div>
-    <!-- class="collapse navbar-collapse" -->
+
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/courses">课程体系</a></li>
@@ -22,19 +22,11 @@
         <ng-template [ngIf]="!first_layer_verify">
           <li><a routerLink="/signin">登录</a></li>
         </ng-template>
-        <!-- <li class="dropdown" appDropdown *ngIf="isAuthenticated()">
-          <a class="dropdown-toggle" role="button">
-            Manage <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a style="cursor:pointer;"
-              (click)="storeData()">Save data</a></li>
-            <li><a style="cursor:pointer;"
-                (click)="fetchData()">Fetch data</a></li>
-          </ul>
-        </li> -->
         <li routerLinkActive="active" *ngIf="first_layer_verify && !second_layer_verify">
           <a routerLink="/me">个人中心</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="second_layer_verify">
+          <a routerLink="/teacher">教师中心</a>
         </li>
         <li><a *ngIf="first_layer_verify" (click)="logout()"
           style="cursor: pointer;">Logout</a></li>
