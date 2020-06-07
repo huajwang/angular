@@ -129,4 +129,22 @@ export class AuthService implements OnInit {
       return false;
     }
   }
+
+  resetPassword(emailAddress: string): void {
+    firebase.auth().sendPasswordResetEmail(emailAddress)
+    .then(function() {
+      // email sent
+    })
+    .catch(function() {
+      console.log("send password reset email failed.")
+    });
+  }
+
+
+
+
+
+
+
+
 }
