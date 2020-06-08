@@ -13,9 +13,11 @@ export class PyclassListComponent implements OnInit, OnDestroy {
 
   @Input() category: string;
   courses: Course[] = [];
+  course: Course;
   subscription: Subscription;
 
   category_subscription: Subscription;
+  course_subscription: Subscription;
 
   constructor(private courseService: CourseService) { }
 
@@ -28,6 +30,11 @@ export class PyclassListComponent implements OnInit, OnDestroy {
     this.subscription = this.courseService.coursesChanged.subscribe(
       (courses: Course[]) => {
         this.courses = courses;
+      }
+    );
+    this.course_subscription = this.courseService.courseChanged.subscribe(
+      (course: Course) => {
+        this.course = course;
       }
     );
     this.courseService.getCourses(this.category);

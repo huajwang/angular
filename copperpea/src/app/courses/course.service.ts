@@ -39,6 +39,9 @@ export class CourseService {
       });
   }
 
+  backToStart() {
+    this.courseChanged.next(null);
+  }
 
   getCourse(id: number) {
     this.courseChanged.next(this.pyCourses[id]);

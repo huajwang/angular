@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseService } from "../../course.service";
 
 @Component({
   selector: 'app-python-start',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PythonStartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
+    // now, page is in the start component
+    this.courseService.backToStart();
   }
 
 }

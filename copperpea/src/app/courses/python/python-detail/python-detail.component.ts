@@ -55,7 +55,6 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
         this.courseService.getCourseLectures(this.course.courseId);
         // need to check paid status here as well
         if (this.isAuthenticated()) {
-          console.log("route.params: alreay authenticated, check isCoursePaid...");
           this.authService.isCoursePaid(this.course.courseId);
         }
       }
@@ -63,12 +62,13 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
 
     this.courseService.courseChanged.subscribe(
       (course: Course) => {
-        this.courseService.getCourseLectures(course.courseId);
-        // another place need to check paid status
-        if (this.isAuthenticated()) {
-          this.authService.isCoursePaid(course.courseId);
+        if (course) { // if we go back to the start component
+          this.courseService.getCourseLectures(course.courseId);
+          // another place need to check paid status
+          if (this.isAuthenticated()) {
+            this.authService.isCoursePaid(course.courseId);
+          }
         }
-
       }
     );
 
