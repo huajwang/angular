@@ -1,4 +1,4 @@
-.course-content {
+/* .course-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,4 +30,8 @@ mat-card {
 }
 mat-card-content {
   background-color: yellow;
+} */
+
+.mat-form-field {
+  margin-right: 4px;
 }

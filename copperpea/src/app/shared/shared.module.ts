@@ -7,6 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatTreeModule } from "@angular/material/tree";
+import {CdkTreeModule} from '@angular/cdk/tree';
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 import { DropdownDirective } from "./dropdown.directive";
 
@@ -19,7 +22,10 @@ import { DropdownDirective } from "./dropdown.directive";
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTreeModule,
+    MatCheckboxModule,
+    CdkTreeModule
   ],
   exports: [
     CommonModule,
@@ -30,7 +36,10 @@ import { DropdownDirective } from "./dropdown.directive";
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTreeModule,
+    MatCheckboxModule,
+    CdkTreeModule
   ]
 })
 export class SharedModule {}
