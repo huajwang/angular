@@ -12,10 +12,11 @@ import { FileService } from  '../../shared/file.service';
 })
 export class TeacherComponent implements OnInit {
 
-  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
+  @ViewChild("fileUploadInput", {static: false}) fileUploadInput: ElementRef;
   files = [];
 
-  constructor(private fileService: FileService) { }
+  constructor(private fileService: FileService) {
+  }
 
   ngOnInit(): void {
   }
@@ -45,23 +46,22 @@ export class TeacherComponent implements OnInit {
   }
 
   private uploadFiles() {
-    this.fileUpload.nativeElement.value = '';
+    this.fileUploadInput.nativeElement.value = '';
     this.files.forEach(file => {
       this.uploadFile(file);
     });
   }
 
   onClick() {
-      const fileUpload = this.fileUpload.nativeElement;
-      fileUpload.onchange = () => {
-        for (let index = 0; index < fileUpload.files.length; index++)
+      const fileUploadInput = this.fileUploadInput.nativeElement;
+      fileUploadInput.onchange = () => {
+        for (let index = 0; index < fileUploadInput.files.length; index++)
         {
-            const file = fileUpload.files[index];
+            const file = fileUploadInput.files[index];
             this.files.push({ data: file, inProgress: false, progress: 0});
         }
         this.uploadFiles();
         };
-      fileUpload.click();
+      fileUploadInput.click();
   }
-
 }

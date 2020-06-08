@@ -1,14 +1,33 @@
+.course-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 ul, li {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .a-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-top: 100px;
+  margin: 10px;
+  width: 90%;
 }
 
+mat-form-field {
+  width: 100%;
+}
+mat-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 mat-card-content {
   background-color: yellow;
 }
