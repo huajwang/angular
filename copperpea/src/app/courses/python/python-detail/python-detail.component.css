@@ -193,17 +193,15 @@ div.lecture-description {
   bottom: 0;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
   align-items: center;
   background-color: #FFEBCD;
-  height: 60px;
+  height: 50px;
   width: 100%;
   z-index: 5;
-  justify-content: space-around;
 }
 
 .nav-bottom > div {
   display: flex;
-  justify-content: center;
+  align-self: center;
   align-items: center;
 }

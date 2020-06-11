@@ -11,8 +11,8 @@ import { CourseLecture } from "./course-lecture.model";
 })
 export class CourseService {
 
-  courseUrl = 'http://localhost:8080/edu/courses';
-  courseLectureUrl = 'http://localhost:8080/edu/courses/';
+  courseUrl = 'http://121.199.12.135/api/courses';
+  courseLectureUrl = 'http://121.199.12.135/api/courses/';
 
   categoryChanged = new Subject<string>();
 

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('chatPopup') chatPopup: ElementRef;
   @ViewChild('box') box: ElementRef;
 
-  webSocketEndPoint: string = 'http://localhost:8080/edu/copperpea-websocket';
+  webSocketEndPoint: string = 'http://121.199.12.135/api/copperpea-websocket';
   topic: string = "/topic/biztoc";
   stompClient: any;
   chatmsgs: ChatMessage[];

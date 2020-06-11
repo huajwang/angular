@@ -11,8 +11,8 @@ export class AuthService implements OnInit {
   token = null;
   username: string = '';
   paidStatusChanged = new Subject<boolean>();
-  payCheckUrl = "http://localhost:8080/edu/payCheck";
-  lookupTeacherUrl = "http://localhost:8080/edu/teacher/lookup"
+  payCheckUrl = "http://121.199.12.135/api/payCheck";
+  lookupTeacherUrl = "http://121.199.12.135/api/teacher/lookup"
   first_layer_verify: boolean = false;
   second_layer_verify: boolean = false;
   first_layer_verify_changed = new Subject<boolean>();
