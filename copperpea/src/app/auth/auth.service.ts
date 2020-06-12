@@ -5,14 +5,15 @@ import { Subject } from "rxjs";
 
 import * as firebase from 'firebase';
 import { UserCoursePay } from "../courses/user-course-pay.model";
+import * as Globals from "../shared/global";
 
 @Injectable()
 export class AuthService implements OnInit {
   token = null;
   username: string = '';
   paidStatusChanged = new Subject<boolean>();
-  payCheckUrl = "http://121.199.12.135/api/payCheck";
-  lookupTeacherUrl = "http://121.199.12.135/api/teacher/lookup"
+  payCheckUrl = Globals.PAY_CHECK_URL;
+  lookupTeacherUrl = Globals.LOOK_UP_TEACHER_URL;
   first_layer_verify: boolean = false;
   second_layer_verify: boolean = false;
   first_layer_verify_changed = new Subject<boolean>();

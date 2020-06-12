@@ -10,6 +10,8 @@ import { LecturePartContent } from "../../lecture-part-content.model";
 import { CourseService } from "../../course.service";
 import { AuthService } from "../../../auth/auth.service";
 
+const aliyun_oss_url = "https://copperpea.oss-cn-hangzhou.aliyuncs.com";
+
 @Component({
   selector: 'app-python-detail',
   templateUrl: './python-detail.component.html',
@@ -115,7 +117,7 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     this.lecturePart_type = lecturePart.type;
     this.title = lecturePart.partName;
     if (lecturePart.type == 1) {
-      this.videoUrl = lecturePart.videoUrl;
+      this.videoUrl = aliyun_oss_url + lecturePart.videoUrl;
       this.video.nativeElement.load();
       this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'block');
       this.video.nativeElement.play();

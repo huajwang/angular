@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Subject } from "rxjs";
 
 import { Course } from "../courses/course.model";
+import * as Globals from "../shared/global"
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { Course } from "../courses/course.model";
 })
 export class TeacherService {
 
-  stageCourseUrl = "http://121.199.12.135/api/stage/teacher";
+  stageCourseUrl = Globals.STAGE_COURSE_URL;
   stageCoursesChanged = new Subject<Course[]>();
   stageCourses: Course[] = [];
 

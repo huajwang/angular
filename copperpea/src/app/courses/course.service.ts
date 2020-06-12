@@ -5,14 +5,14 @@ import { Subject } from "rxjs";
 import { Course } from "./course.model";
 import { CourseContent } from "./course-content.model";
 import { CourseLecture } from "./course-lecture.model";
+import * as Globals from '../shared/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
 
-  courseUrl = 'http://121.199.12.135/api/courses';
-  courseLectureUrl = 'http://121.199.12.135/api/courses/';
+  courseUrl = Globals.COURSE_URL;
 
   categoryChanged = new Subject<string>();
 
@@ -43,13 +43,17 @@ export class CourseService {
     this.courseChanged.next(null);
   }
 
+  getCategoryDesc(category: string) {
+    return category;
+  }
+
   getCourse(id: number) {
     this.courseChanged.next(this.pyCourses[id]);
     return JSON.parse(localStorage.getItem("courses"))[id];
   }
 
   getCourseLectures(courseId: number) {
-    this.http.get<CourseLecture[]>(this.courseLectureUrl + courseId.toString() + "/lectures")
+    this.http.get<CourseLecture[]>(this.courseUrl + "/" + courseId.toString() + "/lectures")
       .subscribe((courseLectures: CourseLecture[]) => {
         this.courseLectures = courseLectures;
         this.courseLectureChanged.next(this.courseLectures);
