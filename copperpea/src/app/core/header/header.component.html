@@ -12,17 +12,13 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/courses">课程体系</a></li>
-        <li routerLinkActive="active"><a routerLink="/courses/scratch">Scratch动画编程</a></li>
-        <li routerLinkActive="active"><a routerLink="/courses/python">Python</a></li>
-        <li routerLinkActive="active"><a routerLink="/courses/java">Java</a></li>
-        <li routerLinkActive="active"><a routerLink="/courses/cplus">C++</a></li>
-        <li routerLinkActive="active"><a routerLink="/courses/ccc">计算机编程竞赛</a></li>
-        <!-- <li routerLinkActive="active"><a routerLink="/iot">物联网</a></li>
-        <li routerLinkActive="active"><a routerLink="/bigdata">大数据</a></li>
-        <li routerLinkActive="active"><a routerLink="/blockchain">区块链</a></li>
-        <li routerLinkActive="active"><a routerLink="/ai">人工智能</a></li> -->
+        <li routerLinkActive="active"><a routerLink="/courses">Scratch图形编程</a></li>
+        <li routerLinkActive="active"><a routerLink="/courses" fragment="python">Python</a></li>
+        <li routerLinkActive="active"><a routerLink="/courses">Java</a></li>
+        <li routerLinkActive="active"><a routerLink="/courses">C++</a></li>
+        <li routerLinkActive="active"><a routerLink="/courses">计算机编程竞赛</a></li>
         <li routerLinkActive="active"><a routerLink="/download">直播软件下载</a></li>
-        <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
+        <li routerLinkActive="active"><a routerLink="/contact">联系我们</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <ng-template [ngIf]="!first_layer_verify">

@@ -2,16 +2,12 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { CoursesComponent } from "./courses.component";
-import { PythonComponent } from "./python/python.component";
-import { PythonStartComponent } from "./python/python-start/python-start.component";
-import { PythonDetailComponent } from "./python/python-detail/python-detail.component";
+import { CourseComponent } from "./course/course.component";
+
 
 const coursesRoutes: Routes = [
   {path: '', component: CoursesComponent},
-  {path: ':category', component: PythonComponent, children:[
-    {path: '', component: PythonStartComponent},
-    {path: ':id', component: PythonDetailComponent},
-  ]},
+  {path: ':courseName', component: CourseComponent},
 ];
 
 @NgModule({

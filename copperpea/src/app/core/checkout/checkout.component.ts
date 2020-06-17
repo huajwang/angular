@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 import { Course } from "../../courses/course.model";
 import { CourseService } from "../../courses/course.service";
 
@@ -10,13 +10,13 @@ import { CourseService } from "../../courses/course.service";
 })
 export class CheckoutComponent implements OnInit {
 
-  course: Course;
+  course: Course = new Course();
   constructor(private route: ActivatedRoute, private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(
-      (params) => {
-        this.course = this.courseService.getCourse(+params['idx']);
+      (params: Params) => {
+        this.course = this.courseService.getCurrentCourse(params['courseName']);
       }
     );
   }

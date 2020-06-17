@@ -1,6 +1,6 @@
 <div class="course-content">
 
-  <div class="a-container">
+  <form class="a-container">
     <mat-form-field appearance="fill">
       <mat-label>章</mat-label>
       <input matInput>
@@ -14,7 +14,13 @@
       <mat-label>小节内容</mat-label>
       <textarea matInput></textarea>
     </mat-form-field>
-  </div>
+    <div>
+      <button class="btn btn-success" type="button"
+            (click)="onAddItem()">Add</button>
+      <button class="btn btn-danger" type="button">Delete</button>
+      <button class="btn btn-primary" type="button">Clear</button>
+    </div>
+  </form>
 
 
   <div class="a-container">

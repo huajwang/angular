@@ -26,6 +26,24 @@ a:hover {
   color: #ff1b68;
 }
 
+
+.course-category {
+  display: flex;
+  flex-direction: row;
+  margin: 24px 36px;
+}
+
+.course-category_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  cursor: pointer;
+}
+
+
+
+
 .courses {
   display: flex;
   flex-direction: column;

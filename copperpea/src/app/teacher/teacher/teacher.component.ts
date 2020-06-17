@@ -76,4 +76,8 @@ export class TeacherComponent implements OnInit {
         };
       fileUploadInput.click();
   }
+
+  onAddItem() {
+    
+  }
 }

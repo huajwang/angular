@@ -14,42 +14,29 @@ export class CourseService {
 
   courseUrl = Globals.COURSE_URL;
 
-  categoryChanged = new Subject<string>();
-
   courseChanged = new Subject<Course>();
-  coursesChanged = new Subject<Course[]>();
   courseLectureChanged = new Subject<CourseLecture[]>();
 
   constructor(private http: HttpClient) {}
 
-
-  pyCourses: Course[] = [];
   courseContents: CourseContent[] = [];
   courseLectures: CourseLecture[] = [];
 
-  getCourses(courseCategory: string) {
+  getCourse(courseName: string) {
     const options = {
-      params: new HttpParams().append('courseCategory', courseCategory)
+      params: new HttpParams().append('courseName', courseName)
     };
-    this.http.get<Course[]>(this.courseUrl, options)
-      .subscribe((courses: Course[]) => {
-        this.pyCourses = courses;
-        this.coursesChanged.next(this.pyCourses.slice());
-        localStorage.setItem("courses", JSON.stringify(this.pyCourses));
-      });
+    this.http.get<Course>(this.courseUrl, options)
+      .subscribe(
+        (course: Course) => {
+          this.courseChanged.next(course);
+          localStorage.setItem(courseName.trim(), JSON.stringify(course));
+        }
+      );
   }
 
-  backToStart() {
-    this.courseChanged.next(null);
-  }
-
-  getCategoryDesc(category: string) {
-    return category;
-  }
-
-  getCourse(id: number) {
-    this.courseChanged.next(this.pyCourses[id]);
-    return JSON.parse(localStorage.getItem("courses"))[id];
+  getCurrentCourse(courseName: string) {
+    return JSON.parse(localStorage.getItem(courseName.trim()));
   }
 
   getCourseLectures(courseId: number) {

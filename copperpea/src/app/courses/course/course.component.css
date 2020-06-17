@@ -1,3 +1,31 @@
+.course-card {
+  max-width: 400px;
+}
+
+.course-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.course-preview {
+  position: relative;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.course-preview-content {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+
 a {
   text-decoration: none;
   cursor: pointer;
@@ -180,11 +208,6 @@ div.lecture-description {
   background-color: #001f3f;
   color: white;
 }
-
-
-
-
-
 
 
 /*  bottom navbar */

@@ -1,0 +1,152 @@
+<div class="row">
+  <div class="col-md-4">
+    <mat-card class="course-card">
+      <mat-card-header>
+        <div mat-card-avatar class="course-header-image"></div>
+        <mat-card-title>{{ course.courseName }}</mat-card-title>
+        <mat-card-subtitle>{{ course.teacher.teacherName }}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="course-preview" style="background-color: green;" (click)="playPreview()">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <div class="course-preview-content">
+          <h3>预览</h3>
+        </div>
+      </div>
+
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="purchase()">购买</button>
+        <button mat-raised-button color="accent">分享</button>
+      </mat-card-actions>
+      <mat-card-content>
+        <p>
+        这个课程包括:
+        </p>
+        <ul>
+          <li>22 hours on-demand video</li>
+          <li>15 articles </li>
+          <li>19 coding exercises</li>
+          <li>Full lifetime access</li>
+          <li>Access on mobile and TV</li>
+          <li>Certificate of Completion</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-md-8">
+    <p>{{ course.displayName }}</p>
+    <div class="what-you-get-content">
+      <div class="what-you-learn_title">课程内容</div>
+      <ul class="what-you-learn_items">
+        <li class="what-you-learn_item" *ngFor="let courseContent of course.courseContents;">
+            <i class="fa fa-check"></i>
+            <span>{{ courseContent.contentDescription }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <h3>课程内容</h3>
+    <div class="course-content">
+      <div class="course-lecture" *ngFor="let lecture of courseLectures; let i = index;">
+        <a class="content-header" (click)="toggleLectures(i)">
+          <div class="content-header_left">
+            <span>
+              <span class="content-plus" #content_plus>+</span>
+              <span class="content-minus" #content_minus>-</span>
+            </span>
+            <span>{{ lecture.lectureName }}</span>
+          </div>
+          <div>
+            <span>{{ lecture.lectureParts.length }} lectures</span>
+            <!-- <span>12:28</span> -->
+          </div>
+        </a>
+
+        <div class="lectures-container" #lectures_container>
+          <div class="lecture-container" *ngFor="let lecturePart of lecture.lectureParts;">
+            <div class="lecture-left">
+              <span class="lecture-left_play" *ngIf="lecturePart.type == 1">
+                <svg class="bi bi-play-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="orange"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+               </svg>
+              </span>
+              <div class="lecture-left_top">
+                <ng-template [ngIf]="lecturePart.preview || paidStatus">
+                  <div class="lecture-title" (click)="play(lecturePart)">
+                    {{ lecturePart.partName }}
+                    <!-- <a class="arrow-down">
+                      <span>down arrow</span>
+                    </a> -->
+                  </div>
+                </ng-template>
+                <ng-template [ngIf]="!(lecturePart.preview || paidStatus)">
+                  <div class="lecture-title-disabled">
+                    {{ lecturePart.partName }}
+                    <!-- <a class="arrow-down">
+                      <span>down arrow</span>
+                    </a> -->
+                  </div>
+                </ng-template>
+
+                <div class="lecture-description">
+                  {{ lecturePart.partDescription }}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="lecture-detail">
+              <a><span *ngIf="lecturePart.preview && !paidStatus" (click)="play(lecturePart)">
+                Preview</span></a>
+              <span>{{ lecturePart.length }}</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div> <!-- course content -->
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal" #videoModal>
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" (click)="closeVideoModal()">&times;</span>
+          <span>{{ title }}</span>
+        </div>
+        <div class="modal-body">
+          <video width="100%" controls #video>
+              <source [src]="videoUrl" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="modal-footer">
+          <span>课程</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="textModal" class="modal" #textModal>
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" (click)="closeTextModal()">&times;</span>
+          <span>{{ title }}</span>
+        </div>
+        <div class="text-modal-body">
+          <h3>练习: </h3>
+          <pre *ngFor="let part_content of part_contents">{{ part_content.partContent }}</pre>
+        </div>
+        <div class="modal-footer">
+          <span>课程</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -18,27 +18,21 @@
   color: DodgerBlue;
 }
 
-.hero-text button {
-  font-size: 24px;
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 10px 25px;
-  color: black;
-  background-color: LightYellow;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 12px;
-  box-shadow: 0 5px #999;
+.about-us {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 24px 36px;
 }
 
-.hero-text button:hover {
-  background-color: #555;
-  color: white;
+.about-us_img {
+  width: 50%;
 }
 
-.hero-text button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+.about-us_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 24px;
+  width: 50%;
 }

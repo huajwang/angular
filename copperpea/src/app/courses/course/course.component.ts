@@ -2,25 +2,25 @@ import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, ElementRef, Rend
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Subscription } from "rxjs";
 
-import { Course } from "../../course.model";
-import { CourseLecture } from "../../course-lecture.model";
-import { LecturePart } from "../../lecture-part.model";
-import { LecturePartContent } from "../../lecture-part-content.model";
+import { Course } from "../course.model";
+import { CourseLecture } from "../course-lecture.model";
+import { LecturePart } from "../lecture-part.model";
+import { LecturePartContent } from "../lecture-part-content.model";
 
-import { CourseService } from "../../course.service";
-import { AuthService } from "../../../auth/auth.service";
+import { CourseService } from "../course.service";
+import { AuthService } from "../../auth/auth.service";
 
 const aliyun_oss_url = "https://copperpea.oss-cn-hangzhou.aliyuncs.com";
 
+
 @Component({
-  selector: 'app-python-detail',
-  templateUrl: './python-detail.component.html',
-  styleUrls: ['./python-detail.component.css']
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
 })
-export class PythonDetailComponent implements OnInit, OnDestroy {
-  // Notice: id is the course index in the array, not courseId
-  id: number = 0;
-  course: Course;
+export class CourseComponent implements OnInit, OnDestroy {
+
+  course: Course = new Course();
   paidStatus: boolean = false;
   courseLectures: CourseLecture[] = [];
   lectures_expanded: boolean[] = [];
@@ -52,13 +52,18 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
 
     this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id'];
-        this.course = this.courseService.getCourse(this.id);
-        this.courseService.getCourseLectures(this.course.courseId);
-        // need to check paid status here as well
-        if (this.isAuthenticated()) {
-          this.authService.isCoursePaid(this.course.courseId);
-        }
+        let courseName = params['courseName'];
+        this.courseService.courseChanged.subscribe(
+          (course: Course) => {
+            this.course = course;
+            this.courseService.getCourseLectures(this.course.courseId);
+            // need to check paid status here as well
+            if (this.isAuthenticated()) {
+              this.authService.isCoursePaid(this.course.courseId);
+            }
+          }
+        );
+        this.courseService.getCourse(courseName);
       }
     );
 
@@ -127,7 +132,14 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
 
       this.renderer.setStyle(this.textModal.nativeElement, 'display', 'block');
     }
+  }
 
+  playPreview() {
+    this.title = "Course Preview: " + this.course.courseName;
+    this.videoUrl = aliyun_oss_url + this.course.previewUrl;
+    this.video.nativeElement.load();
+    this.renderer.setStyle(this.videoModal.nativeElement, 'display', 'block');
+    this.video.nativeElement.play();
   }
 
   closeVideoModal() {
@@ -143,9 +155,8 @@ export class PythonDetailComponent implements OnInit, OnDestroy {
     return this.authService.isAuthenticated();
   }
 
-  // idx is the item index in the array
-  purchase(idx: number) {
-    this.router.navigate(['/checkout'], { queryParams: {'idx': idx} });
+  purchase() {
+    this.router.navigate(['/checkout'], { queryParams: {'courseName': this.course.courseName} });
   }
 
 }
