@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="lessonForm" (ngSubmit)="onSubmit()">
+      <button type="submit" name="save"
+      class="btn btn-primary" [disabled]="!lessonForm.valid">保存</button>
+      <button type="button" name="cancel"
+      class="btn btn-danger" (click)="onCancel()">取消</button>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="lessonName">课程名称</label>
+            <input type="text" id="lessonName" class="form-control"
+            formControlName="lessonName" placeholder="python_bootcamp">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="category">课程类别</label>
+            <input type="text" id="category" class="form-control" formControlName="category">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="displayName">课程显示名称</label>
+            <input type="text" id="displayName" class="form-control" formControlName="displayName">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="desc">课程描述</label>
+            <textarea
+              id="desc" rows="4" class="form-control" formControlName="lessonDesc">
+              </textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="price">课程价格</label>
+            <input type="text" id="price" class="form-control" formControlName="price">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="previewUrl">课程预览地址</label>
+            <input type="text" id="previewUrl" class="form-control" formControlName="previewUrl">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

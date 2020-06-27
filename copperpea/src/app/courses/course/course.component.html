@@ -140,7 +140,9 @@
         </div>
         <div class="text-modal-body">
           <h3>练习: </h3>
-          <pre *ngFor="let part_content of part_contents">{{ part_content.partContent }}</pre>
+          <div *ngFor="let part_content of part_contents">
+            <div [innerHTML]="part_content.partContent"></div>
+          </div>
         </div>
         <div class="modal-footer">
           <span>课程</span>

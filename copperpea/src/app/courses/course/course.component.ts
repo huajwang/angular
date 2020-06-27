@@ -128,9 +128,10 @@ export class CourseComponent implements OnInit, OnDestroy {
       this.video.nativeElement.play();
     } else {
 
-      this.part_contents = lecturePart.lecturePartContents;
-
-      this.renderer.setStyle(this.textModal.nativeElement, 'display', 'block');
+      // this.part_contents = lecturePart.lecturePartContents;
+      // this.renderer.setStyle(this.textModal.nativeElement, 'display', 'block');
+      this.router.navigate([lecturePart.partId],
+        { relativeTo: this.route, queryParams: {'articleUrl': lecturePart.videoUrl} });
     }
   }
 

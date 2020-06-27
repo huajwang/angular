@@ -9,6 +9,7 @@ import { AuthModule } from "./auth/auth.module";
 import { CoreModule } from "./core/core.module";
 import { MeModule } from "./me/me.module";
 import { TeacherModule } from "./teacher/teacher.module";
+import { LessonModule } from "./lessons/lesson.module";
 
 import { AppComponent } from './app.component';
 import { AuthService } from "./auth/auth.service";
@@ -22,11 +23,10 @@ import { TeacherAuthGuardService } from "./auth/teacher-auth-guard.service";
 import { DownloadComponent } from './download/download.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    DownloadComponent,
+    DownloadComponent
   ],
   imports: [
     BrowserModule,

@@ -43,7 +43,7 @@ export class AuthService implements OnInit {
     this.httpClient.get<boolean>(this.lookupTeacherUrl, options).subscribe(
       (isTeacher: boolean) => {
         if (isTeacher) {
-          this.router.navigate(['/teacher']);
+          this.router.navigate(['/lessons']);
           this.second_layer_verify = true;
           this.second_layer_verify_changed.next(true);
         }

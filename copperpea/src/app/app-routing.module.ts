@@ -11,6 +11,8 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'courses', loadChildren:
       () => import('./courses/courses.module').then(m => m.CoursesModule)},
+  {path: 'lessons', loadChildren:
+      () => import('./lessons/lesson.module').then(m => m.LessonModule)},
   {path: 'teacher', loadChildren:
       () => import('./teacher/teacher.module').then(m => m.TeacherModule)},
   {path: 'me', loadChildren:
