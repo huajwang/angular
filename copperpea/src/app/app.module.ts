@@ -21,6 +21,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { TeacherAuthGuardService } from "./auth/teacher-auth-guard.service";
 import { DownloadComponent } from './download/download.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { DownloadComponent } from './download/download.component';
     AuthModule,
     CoreModule,
     MeModule,
-    TeacherModule
+    TeacherModule,
+    FontAwesomeModule
   ],
   providers: [AuthService, AuthGuardService, ChatService, MeService,
               TeacherAuthGuardService, FileService],
